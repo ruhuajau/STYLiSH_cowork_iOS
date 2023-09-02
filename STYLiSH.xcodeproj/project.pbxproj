@@ -125,6 +125,16 @@
 		3CFAC67322EEF71C00785FAB /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFAC67222EEF71C00785FAB /* String+Extension.swift */; };
 		58A77AA0262F3CC800B88679 /* LSColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A77A9F262F3CC800B88679 /* LSColor+Extension.swift */; };
 		D306B883B370DFD3ED8ACD74 /* Pods_STYLiSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C2B4AF3EF2ABFF2BB9F7AB /* Pods_STYLiSH.framework */; };
+		DB72933B2AA2D8F400C591E3 /* Swipe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB72933A2AA2D8F400C591E3 /* Swipe.storyboard */; };
+		DB72933D2AA2D90200C591E3 /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB72933C2AA2D90200C591E3 /* SwipeViewController.swift */; };
+		DB907F5E2AA2DAB900A6CD1B /* TinderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB907F5C2AA2DAB800A6CD1B /* TinderButton.swift */; };
+		DB907F5F2AA2DAB900A6CD1B /* ButtonStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB907F5D2AA2DAB800A6CD1B /* ButtonStackView.swift */; };
+		DB907F612AA2DBD500A6CD1B /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB907F602AA2DBD500A6CD1B /* UIView+Extensions.swift */; };
+		DB907F672AA2DBEC00A6CD1B /* TinderCardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB907F632AA2DBEC00A6CD1B /* TinderCardContentView.swift */; };
+		DB907F682AA2DBEC00A6CD1B /* TinderCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB907F642AA2DBEC00A6CD1B /* TinderCardModel.swift */; };
+		DB907F692AA2DBEC00A6CD1B /* TinderCardFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB907F652AA2DBEC00A6CD1B /* TinderCardFooterView.swift */; };
+		DB907F6A2AA2DBEC00A6CD1B /* TinderCardOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB907F662AA2DBEC00A6CD1B /* TinderCardOverlay.swift */; };
+		DBD2B11D2AA33F8B0066FBA6 /* SwipeResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD2B11C2AA33F8B0066FBA6 /* SwipeResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -259,6 +269,16 @@
 		3CFAC67222EEF71C00785FAB /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		42C2B4AF3EF2ABFF2BB9F7AB /* Pods_STYLiSH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_STYLiSH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A77A9F262F3CC800B88679 /* LSColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LSColor+Extension.swift"; sourceTree = "<group>"; };
+		DB72933A2AA2D8F400C591E3 /* Swipe.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Swipe.storyboard; sourceTree = "<group>"; };
+		DB72933C2AA2D90200C591E3 /* SwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
+		DB907F5C2AA2DAB800A6CD1B /* TinderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinderButton.swift; sourceTree = "<group>"; };
+		DB907F5D2AA2DAB800A6CD1B /* ButtonStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonStackView.swift; sourceTree = "<group>"; };
+		DB907F602AA2DBD500A6CD1B /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		DB907F632AA2DBEC00A6CD1B /* TinderCardContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinderCardContentView.swift; sourceTree = "<group>"; };
+		DB907F642AA2DBEC00A6CD1B /* TinderCardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinderCardModel.swift; sourceTree = "<group>"; };
+		DB907F652AA2DBEC00A6CD1B /* TinderCardFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinderCardFooterView.swift; sourceTree = "<group>"; };
+		DB907F662AA2DBEC00A6CD1B /* TinderCardOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinderCardOverlay.swift; sourceTree = "<group>"; };
+		DBD2B11C2AA33F8B0066FBA6 /* SwipeResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeResultViewController.swift; sourceTree = "<group>"; };
 		E921004E251C9FC3CBC174F5 /* Pods-STYLiSH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STYLiSH.release.xcconfig"; path = "Target Support Files/Pods-STYLiSH/Pods-STYLiSH.release.xcconfig"; sourceTree = "<group>"; };
 		F551E8F447D7C8DC42B53B98 /* Pods-STYLiSH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STYLiSH.debug.xcconfig"; path = "Target Support Files/Pods-STYLiSH/Pods-STYLiSH.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -289,6 +309,7 @@
 		3C09F51F22115A9F00C5B3E2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				DB907F602AA2DBD500A6CD1B /* UIView+Extensions.swift */,
 				3C09F51D22114E1900C5B3E2 /* UIStoryboard+Extension.swift */,
 				3CEBE07B222F7A210064EF82 /* Int+Extension.swift */,
 				3CED80AD23012CE400B7DA8E /* NSLocalizedString+Extension.swift */,
@@ -551,6 +572,7 @@
 		3CD2912E22113CE4008B8A2D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DB7293392AA2D8E700C591E3 /* Swipe */,
 				3C3369102227CDAF008A5A7A /* Base */,
 				5AE6F61E29E3F94A003764C6 /* Auth */,
 				5AE6F62029E3F954003764C6 /* TapPay */,
@@ -565,6 +587,7 @@
 				3CD29120221135E2008B8A2D /* Main.storyboard */,
 				3CED80A82301256200B7DA8E /* Profile.storyboard */,
 				3CED80B12301301300B7DA8E /* Trolley.storyboard */,
+				DB72933A2AA2D8F400C591E3 /* Swipe.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -709,6 +732,29 @@
 			path = APIProviders;
 			sourceTree = "<group>";
 		};
+		DB7293392AA2D8E700C591E3 /* Swipe */ = {
+			isa = PBXGroup;
+			children = (
+				DB907F622AA2DBEC00A6CD1B /* TinderCard */,
+				DB907F5D2AA2DAB800A6CD1B /* ButtonStackView.swift */,
+				DB907F5C2AA2DAB800A6CD1B /* TinderButton.swift */,
+				DB72933C2AA2D90200C591E3 /* SwipeViewController.swift */,
+				DBD2B11C2AA33F8B0066FBA6 /* SwipeResultViewController.swift */,
+			);
+			path = Swipe;
+			sourceTree = "<group>";
+		};
+		DB907F622AA2DBEC00A6CD1B /* TinderCard */ = {
+			isa = PBXGroup;
+			children = (
+				DB907F632AA2DBEC00A6CD1B /* TinderCardContentView.swift */,
+				DB907F642AA2DBEC00A6CD1B /* TinderCardModel.swift */,
+				DB907F652AA2DBEC00A6CD1B /* TinderCardFooterView.swift */,
+				DB907F662AA2DBEC00A6CD1B /* TinderCardOverlay.swift */,
+			);
+			path = TinderCard;
+			sourceTree = "<group>";
+		};
 		F26A8A19BFED7C956C38BFE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -788,6 +834,7 @@
 				3CD29127221135E3008B8A2D /* LaunchScreen.storyboard in Resources */,
 				3C4B10D622292732009942B7 /* card_amex.png in Resources */,
 				3C0DD87F2213533F00F5237E /* LobbyTableViewCell.xib in Resources */,
+				DB72933B2AA2D8F400C591E3 /* Swipe.storyboard in Resources */,
 				3C3369182227CE8E008A5A7A /* TrolleyProductBaseView.xib in Resources */,
 				3C546BE922EAC7AA0082C655 /* STOrderHeaderView.xib in Resources */,
 				3C6020DE222B90DF00312958 /* ProductDetailLabelCell.xib in Resources */,
@@ -891,26 +938,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C0DD87822134EC100F5237E /* UIFont+Extension.swift in Sources */,
+				DB907F692AA2DBEC00A6CD1B /* TinderCardFooterView.swift in Sources */,
 				3CE7A507223042CE009FF003 /* STBaseTextField.swift in Sources */,
 				3CB80E78222FCCC20095F18C /* Bundle+Extension.swift in Sources */,
 				3CE7A519223064C7009FF003 /* UserObject.swift in Sources */,
 				3CB801272229AFF10029A552 /* UICollectionView+Extension.swift in Sources */,
 				3C8F191B22E5BA9F00EECE90 /* LobbyView.swift in Sources */,
 				3C6FABF522FD39EB00226316 /* STOrderProductCellViewModel.swift in Sources */,
+				DB907F682AA2DBEC00A6CD1B /* TinderCardModel.swift in Sources */,
 				3CED4C0C22141E9700121D4B /* MarketProvider.swift in Sources */,
 				3C831C6022E9945500112298 /* STOrderProductCell.swift in Sources */,
+				DB907F672AA2DBEC00A6CD1B /* TinderCardContentView.swift in Sources */,
 				3C1ACFE922152D29005583E2 /* ProfileCollectionViewCell.swift in Sources */,
 				3CB801232229A5290029A552 /* MJRefreshWrapper.swift in Sources */,
 				3C546BE522EABB6D0082C655 /* CheckoutViewController.swift in Sources */,
 				3CD2911D221135E2008B8A2D /* AppDelegate.swift in Sources */,
+				DB907F6A2AA2DBEC00A6CD1B /* TinderCardOverlay.swift in Sources */,
 				3CEBE07A222F72600064EF82 /* STYLiSH.xcdatamodeld in Sources */,
 				3CDC5A66222D85990071D0D1 /* ColorSelectionCell.swift in Sources */,
 				3C6020D8222B883600312958 /* ProductDescriptionTableViewCell.swift in Sources */,
 				3C0DD876221348E900F5237E /* LobbyViewController.swift in Sources */,
 				3C33691F2227DC7B008A5A7A /* TrolleySelectionView.swift in Sources */,
 				3C831C6422E9AF8F00112298 /* STOrderUserInputCell.swift in Sources */,
+				DB72933D2AA2D90200C591E3 /* SwipeViewController.swift in Sources */,
 				3C4B10E222292EBB009942B7 /* STTapPayViewController.swift in Sources */,
 				3C831C8A22EAAF7A00112298 /* STPaymentInfoTableViewCell.swift in Sources */,
+				DB907F612AA2DBD500A6CD1B /* UIView+Extensions.swift in Sources */,
 				3C990F6C22E5C78200F2FCEA /* ProductDetailView.swift in Sources */,
 				3C546BE722EAC79D0082C655 /* STOrderHeaderView.swift in Sources */,
 				3C5DD7CC2227EFFF0053B67A /* TrolleyViewController.swift in Sources */,
@@ -949,13 +1002,16 @@
 				3C09F51E22114E1900C5B3E2 /* UIStoryboard+Extension.swift in Sources */,
 				3C0DD87E2213533F00F5237E /* LobbyTableViewCell.swift in Sources */,
 				3C33690E2226F53E008A5A7A /* TrolleyTableViewCell.swift in Sources */,
+				DB907F5F2AA2DAB900A6CD1B /* ButtonStackView.swift in Sources */,
 				3CC706122216955900CAD850 /* STBaseNavigationController.swift in Sources */,
 				3C8F191922E5997B00EECE90 /* LobbyTableViewHeaderView.swift in Sources */,
+				DBD2B11D2AA33F8B0066FBA6 /* SwipeResultViewController.swift in Sources */,
 				3CE7A517223061A9009FF003 /* UserRequest.swift in Sources */,
 				3C09F52122115AB700C5B3E2 /* UIImage+Extension.swift in Sources */,
 				3C6B8FE8222CE53100804EFE /* BasicSelectionCell.swift in Sources */,
 				3C41B8472216667000112F94 /* ProductViewController.swift in Sources */,
 				3CE7A51322305916009FF003 /* UserProvider.swift in Sources */,
+				DB907F5E2AA2DAB900A6CD1B /* TinderButton.swift in Sources */,
 				3CE7A51E22308D34009FF003 /* OrderObject.swift in Sources */,
 				3CD9BB35223B882C0012C00D /* AuthViewController.swift in Sources */,
 				58A77AA0262F3CC800B88679 /* LSColor+Extension.swift in Sources */,
