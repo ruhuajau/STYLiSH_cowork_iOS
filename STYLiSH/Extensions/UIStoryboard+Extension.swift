@@ -15,6 +15,7 @@ extension UIStoryboard {
     static var trolley: UIStoryboard { return stStoryboard(name: "Trolley") }
     static var profile: UIStoryboard { return stStoryboard(name: "Profile") }
     static var auth: UIStoryboard { return stStoryboard(name: "Auth") }
+    static var swipe: UIStoryboard { return stStoryboard(name: "Swipe") }
 
     private static func stStoryboard(name: String) -> UIStoryboard {
         return UIStoryboard(name: name, bundle: nil)

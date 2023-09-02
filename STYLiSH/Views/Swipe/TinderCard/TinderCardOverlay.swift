@@ -32,8 +32,8 @@ class TinderCardOverlay: UIView {
     switch direction {
     case .left:
       createLeftOverlay()
-    case .up:
-      createUpOverlay()
+//    case .up:
+//      createUpOverlay()
     case .right:
       createRightOverlay()
     default:
@@ -56,14 +56,14 @@ class TinderCardOverlay: UIView {
                         paddingRight: 14)
   }
 
-  private func createUpOverlay() {
-    let upTextView = TinderCardOverlayLabelView(withTitle: "LOVE",
-                                                color: .sampleBlue,
-                                                rotation: -CGFloat.pi / 20)
-    addSubview(upTextView)
-    upTextView.anchor(bottom: bottomAnchor, paddingBottom: 20)
-    upTextView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-  }
+//  private func createUpOverlay() {
+//    let upTextView = TinderCardOverlayLabelView(withTitle: "LOVE",
+//                                                color: .sampleBlue,
+//                                                rotation: -CGFloat.pi / 20)
+//    addSubview(upTextView)
+//    upTextView.anchor(bottom: bottomAnchor, paddingBottom: 20)
+//    upTextView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+//  }
 
   private func createRightOverlay() {
     let rightTextView = TinderCardOverlayLabelView(withTitle: "LIKE",
