@@ -13,6 +13,7 @@ struct CheckoutAPIBody: Encodable {
     let prime: String
 }
 
+
 struct Order: Encodable {
     
     enum CodingKeys: String, CodingKey {
