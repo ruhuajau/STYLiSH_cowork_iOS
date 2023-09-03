@@ -37,34 +37,13 @@ class SwipeViewController: UIViewController {
     }()
     
     private let cardModels = [
-        TinderCardModel(name: "Michelle",
-                        age: 26,
-                        occupation: "Graphic Designer",
-                        image: UIImage(named: "michelle")),
-        TinderCardModel(name: "Joshua",
-                        age: 27,
-                        occupation: "Business Services Sales Representative",
-                        image: UIImage(named: "joshua")),
-        TinderCardModel(name: "Daiane",
-                        age: 23,
-                        occupation: "Graduate Student",
-                        image: UIImage(named: "daiane")),
-        TinderCardModel(name: "Julian",
-                        age: 25,
-                        occupation: "Model/Photographer",
-                        image: UIImage(named: "julian")),
-        TinderCardModel(name: "Andrew",
-                        age: 26,
-                        occupation: nil,
-                        image: UIImage(named: "andrew")),
-        TinderCardModel(name: "Bailey",
-                        age: 25,
-                        occupation: "Software Engineer",
-                        image: UIImage(named: "bailey")),
-        TinderCardModel(name: "Rachel",
-                        age: 27,
-                        occupation: "Interior Designer",
-                        image: UIImage(named: "rachel"))
+        TinderCardModel(image: UIImage(named: "michelle")),
+        TinderCardModel(image: UIImage(named: "joshua")),
+        TinderCardModel(image: UIImage(named: "daiane")),
+        TinderCardModel(image: UIImage(named: "julian")),
+        TinderCardModel(image: UIImage(named: "andrew")),
+        TinderCardModel(image: UIImage(named: "bailey")),
+        TinderCardModel(image: UIImage(named: "rachel"))
     ]
     
     override func viewDidLoad() {
@@ -211,7 +190,7 @@ extension SwipeViewController: ButtonStackViewDelegate, SwipeCardStackDataSource
         
         let model = cardModels[index]
         card.content = TinderCardContentView(withImage: model.image)
-        card.footer = TinderCardFooterView(withTitle: "\(model.name), \(model.age)", subtitle: model.occupation)
+//        card.footer = TinderCardFooterView(withTitle: "\(model.name), \(model.age)", subtitle: model.occupation)
         
         return card
     }
@@ -231,11 +210,11 @@ extension SwipeViewController: ButtonStackViewDelegate, SwipeCardStackDataSource
     }
     
     func cardStack(_ cardStack: SwipeCardStack, didUndoCardAt index: Int, from direction: SwipeDirection) {
-        print("Undo \(direction) swipe on \(cardModels[index].name)")
+//        print("Undo \(direction) swipe on \(cardModels[index].name)")
     }
     
     func cardStack(_ cardStack: SwipeCardStack, didSwipeCardAt index: Int, with direction: SwipeDirection) {
-        print("Swiped \(direction) on \(cardModels[index].name)")
+//        print("Swiped \(direction) on \(cardModels[index].name)")
     }
     
     func cardStack(_ cardStack: SwipeCardStack, didSelectCardAt index: Int) {

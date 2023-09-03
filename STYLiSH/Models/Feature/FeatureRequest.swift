@@ -1,15 +1,14 @@
 //
-//  UserRequest.swift
+//  FeatureRequest.swift
 //  STYLiSH
 //
-//  Created by WU CHIH WEI on 2019/3/7.
-//  Copyright © 2019 AppWorks School. All rights reserved.
+//  Created by Renee Hsu on 2023/9/3.
+//  Copyright © 2023 AppWorks School. All rights reserved.
 //
 
 import Foundation
 
-enum STUserRequest: STRequest {
-    // TODO: UPDATE
+enum STFeatureRequest: STRequest {
     case signin(String)
     case checkout(token: String, body: Data?)
     case profile(token: String)
