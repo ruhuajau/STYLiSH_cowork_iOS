@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
-              window?.rootViewController = SwipeViewController()
-              window?.makeKeyAndVisible()
+        window?.rootViewController = SwipeViewController()
+        window?.makeKeyAndVisible()
         
         TPDSetup.setWithAppId(
             Bundle.STValueForInt32(key: STConstant.tapPayAppID),
