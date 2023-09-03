@@ -13,18 +13,19 @@ class SwipeResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func loginButtonTapped(_ sender: Any) {
+        guard let authVC = UIStoryboard.auth.instantiateInitialViewController() else { return }
+        authVC.modalPresentationStyle = .overCurrentContext
+        present(authVC, animated: false, completion: nil)
+    
     }
-    */
-
+    
+    @IBAction func backToHomePageButtonTapped(_ sender: Any) {
+        guard let mainVC = UIStoryboard.main.instantiateInitialViewController() else { return }
+        mainVC.modalPresentationStyle = .overCurrentContext
+        present(mainVC, animated: false, completion: nil)
+    }
+    
 }

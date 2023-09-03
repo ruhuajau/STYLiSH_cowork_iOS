@@ -221,7 +221,12 @@ extension SwipeViewController: ButtonStackViewDelegate, SwipeCardStackDataSource
     }
     
     func didSwipeAllCards(_ cardStack: SwipeCardStack) {
-        // TODO: 導覽至結果頁面
+        LKProgressHUD.show()
+        
+        let storyboard = UIStoryboard.swipe
+        guard let swipeResultVC = storyboard.instantiateViewController(withIdentifier: "SwipeResult") as? SwipeResultViewController else { return }
+        swipeResultVC.modalPresentationStyle = .fullScreen
+        present(swipeResultVC, animated: false)
         print("Swiped all cards!導覽至結果頁面")
     }
     
