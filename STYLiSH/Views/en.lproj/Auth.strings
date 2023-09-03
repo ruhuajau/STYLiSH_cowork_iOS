@@ -5,5 +5,5 @@
 /* Class = "UIButton"; normalTitle = "Facebook 登入"; ObjectID = "L51-58-3lp"; */
 "L51-58-3lp.normalTitle" = "Facebook Login";
 
-/* Class = "UILabel"; text = "登入會員後即可完成結帳。"; ObjectID = "UaM-LH-iKw"; */
+/* Class = "UILabel"; text = "登入會員後即可使用功能。"; ObjectID = "UaM-LH-iKw"; */
 "UaM-LH-iKw.text" = "Complete Purchase After Login.";

@@ -1,5 +1,5 @@
 //
-//  FeatureRequest.swift
+//  TrackingRequest.swift
 //  STYLiSH
 //
 //  Created by Renee Hsu on 2023/9/3.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-enum STFeatureRequest: STRequest {
-    case colorPicker(
+enum STTrackingRequest: STRequest {
+    case trackEvent(
         cid: String,
         memberID: String?,
         eventDate: String,
         eventTimestamp: Int,
-        hairColor: String,
-        skinColor: String
+        eventType: String,
+        eventValue: String
     )
 
     var headers: [String: String] {
@@ -26,15 +26,15 @@ enum STFeatureRequest: STRequest {
 
     var body: Data? {
         switch self {
-        case .colorPicker(let cid, let memberID, let eventDate, let eventTimestamp, let hairColor, let skinColor):
+            case .trackEvent(let cid, let memberID, let eventDate, let eventTimestamp, let eventType, let eventValue):
             let dict: [String: Any] = [
                 "cid": cid,
                 "member_id": memberID ?? "None",
                 "device_os": "iOS",
                 "event_date": eventDate,
                 "event_timestamp": eventTimestamp,
-                "hair": hairColor,
-                "skin": skinColor
+                "event_type": eventType,
+                "event_value": eventValue
             ]
             return try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
         }
@@ -45,6 +45,6 @@ enum STFeatureRequest: STRequest {
     }
 
     var endPoint: String {
-        return "/feature/color_picker"
+        return "/tracking"
     }
 }
