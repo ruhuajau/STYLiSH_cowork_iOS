@@ -80,6 +80,9 @@
                             </backgroundConfiguration>
                             <color key="baseForegroundColor" white="1" alpha="0.9689569536" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </buttonConfiguration>
+                        <connections>
+                            <action selector="colorAnalysisButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="knt-cL-fvP"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -102,6 +105,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="colorAnalysisButton" destination="pCS-Gw-yDO" id="Fl7-Qd-0lN"/>
                 <outlet property="detailLbl" destination="CvJ-RP-jMV" id="TwB-mA-n3x"/>
                 <outlet property="idLbl" destination="hg7-DJ-QZK" id="Wg3-fT-UMm"/>
                 <outlet property="priceLbl" destination="nI9-wZ-yeU" id="sDX-gq-kZr"/>

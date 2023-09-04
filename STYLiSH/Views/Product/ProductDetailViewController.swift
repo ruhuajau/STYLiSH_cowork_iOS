@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProductDetailViewController: STBaseViewController {
+class ProductDetailViewController: STBaseViewController, ColorPickerDelegate, UITableViewDelegate {
 
     private struct Segue {
         static let picker = "SeguePicker"
@@ -17,6 +17,7 @@ class ProductDetailViewController: STBaseViewController {
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.dataSource = self
+            tableView.delegate = self
         }
     }
 
@@ -117,7 +118,11 @@ class ProductDetailViewController: STBaseViewController {
             )
         }
     }
-
+    
+    func sendColorAnalysisButtonTapped() {
+        print("tapped")
+    }
+    
     func showProductPickerView() {
         let maxY = tableView.frame.maxY
         productPickerView.frame = CGRect(
@@ -160,7 +165,15 @@ extension ProductDetailViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let product = product else { return UITableViewCell() }
-        return datas[indexPath.row].cellForIndexPath(indexPath, tableView: tableView, data: product)
+        let cell = datas[indexPath.row].cellForIndexPath(indexPath, tableView: tableView, data: product)
+
+            // Check if the cell is of type ProductDescriptionTableViewCell and set its delegate
+            if let descriptionCell = cell as? ProductDescriptionTableViewCell {
+                descriptionCell.delegate = self
+                print("cell delegate set")
+            }
+
+        return cell
     }
 }
 

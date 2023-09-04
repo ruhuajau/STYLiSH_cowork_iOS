@@ -8,8 +8,14 @@
 
 import UIKit
 
-class ProductDescriptionTableViewCell: ProductBasicCell {
+protocol ColorPickerDelegate: AnyObject {
+    func sendColorAnalysisButtonTapped()
+}
 
+class ProductDescriptionTableViewCell: ProductBasicCell {
+    
+    weak var delegate: ColorPickerDelegate?
+    
     @IBOutlet weak var titleLbl: UILabel!
 
     @IBOutlet weak var priceLbl: UILabel!
@@ -18,6 +24,8 @@ class ProductDescriptionTableViewCell: ProductBasicCell {
 
     @IBOutlet weak var detailLbl: UILabel!
 
+    @IBOutlet weak var colorAnalysisButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,5 +36,10 @@ class ProductDescriptionTableViewCell: ProductBasicCell {
         priceLbl.text = "NT$ \(product.price)"
         idLbl.text = String(product.id)
         detailLbl.text = product.story
+    }
+    
+    @IBAction func colorAnalysisButtonTapped(_ sender: Any) {
+        delegate?.sendColorAnalysisButtonTapped()
+        print("tapped in cell")
     }
 }
