@@ -315,29 +315,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image_Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="WPj-18-yTA">
-                                <rect key="frame" x="0.0" y="74" width="414" height="200"/>
+                                <rect key="frame" x="0.0" y="74" width="414" height="150"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="Auy-Kg-IzF"/>
+                                    <constraint firstAttribute="height" constant="150" id="Auy-Kg-IzF"/>
                                 </constraints>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="W7r-OK-2ef">
-                                <rect key="frame" x="0.0" y="274" width="414" height="350"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DnM-qc-iZk">
+                                <rect key="frame" x="50" y="510" width="314" height="35"/>
+                                <color key="backgroundColor" red="0.47285298339999998" green="0.73498081100000001" blue="0.87757575509999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="uuW-C4-v4Y"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="查看分析結果吧">
+                                    <color key="baseForegroundColor" white="1" alpha="0.9689569536" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MqG-yh-FYs">
+                                <rect key="frame" x="347" y="44" width="51" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system" title=" ">
+                                    <color key="baseForegroundColor" name="B3"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="70F-LF-nAQ" eventType="touchUpInside" id="3pY-bl-dZV"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="W7r-OK-2ef">
+                                <rect key="frame" x="0.0" y="224" width="414" height="270"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="350" id="Gw2-IA-U8a"/>
+                                    <constraint firstAttribute="height" constant="270" id="Gw2-IA-U8a"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="ColorPickerTitleTableViewCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ColorPickerTitleTableViewCell" rowHeight="110" id="CHs-DJ-mAq" customClass="ColorPickerTitleTableViewCell" customModule="STYLiSH" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="110"/>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="ColorPickerTitleTableViewCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ColorPickerTitleTableViewCell" rowHeight="92" id="CHs-DJ-mAq" customClass="ColorPickerTitleTableViewCell" customModule="STYLiSH" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CHs-DJ-mAq" id="8Mv-9a-1N7">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="為您分析適合的商品顏色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMr-F3-PuA">
                                                     <rect key="frame" x="16" y="56" width="191" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" name="B3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="活力花紋長筒牛仔褲" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4s4-fQ-EMJ">
@@ -346,20 +367,30 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdw-hR-ORY">
+                                                    <rect key="frame" x="18" y="85" width="378" height="1"/>
+                                                    <color key="backgroundColor" name="B5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="EWv-kk-7it"/>
+                                                        <constraint firstAttribute="width" constant="378" id="nyE-E2-rDG"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="4s4-fQ-EMJ" firstAttribute="top" secondItem="8Mv-9a-1N7" secondAttribute="top" constant="24" id="9q0-qK-IoH"/>
                                                 <constraint firstItem="VMr-F3-PuA" firstAttribute="leading" secondItem="8Mv-9a-1N7" secondAttribute="leading" constant="16" id="BJt-ln-hsA"/>
                                                 <constraint firstItem="4s4-fQ-EMJ" firstAttribute="leading" secondItem="8Mv-9a-1N7" secondAttribute="leading" constant="16" id="EOp-8t-3g9"/>
                                                 <constraint firstItem="VMr-F3-PuA" firstAttribute="top" secondItem="4s4-fQ-EMJ" secondAttribute="bottom" constant="8" id="lhS-yP-SyD"/>
+                                                <constraint firstItem="gdw-hR-ORY" firstAttribute="centerX" secondItem="8Mv-9a-1N7" secondAttribute="centerX" id="nCM-ij-W3s"/>
+                                                <constraint firstItem="gdw-hR-ORY" firstAttribute="top" secondItem="VMr-F3-PuA" secondAttribute="bottom" constant="8" id="wJs-a3-Hnn"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ColorPickerHairTableViewCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ColorPickerHairTableViewCell" rowHeight="110" id="k4z-dp-Ouo" customClass="ColorPickerHairTableViewCell" customModule="STYLiSH" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="160" width="414" height="110"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ColorPickerHairTableViewCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ColorPickerHairTableViewCell" rowHeight="73" id="k4z-dp-Ouo" customClass="ColorPickerHairTableViewCell" customModule="STYLiSH" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="142" width="414" height="73"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k4z-dp-Ouo" id="Zeb-TY-ITy">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="73"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的髮色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06E-Q6-672">
@@ -435,7 +466,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ColorPickerSkinTableViewCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ColorPickerSkinTableViewCell" rowHeight="110" id="95z-Ea-UHP" customClass="ColorPickerSkinTableViewCell" customModule="STYLiSH" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="270" width="414" height="110"/>
+                                        <rect key="frame" x="0.0" y="215" width="414" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="95z-Ea-UHP" id="A6O-el-mV1">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
@@ -516,34 +547,26 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DnM-qc-iZk">
-                                <rect key="frame" x="50" y="644" width="314" height="35"/>
-                                <color key="backgroundColor" red="0.47285298339999998" green="0.73498081100000001" blue="0.87757575509999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="uuW-C4-v4Y"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="查看分析結果吧">
-                                    <color key="baseForegroundColor" white="1" alpha="0.9689569536" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3Ah-Fb-QHG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="DnM-qc-iZk" firstAttribute="leading" secondItem="3Ah-Fb-QHG" secondAttribute="leading" constant="50" id="22D-G8-VT3"/>
+                            <constraint firstItem="MqG-yh-FYs" firstAttribute="top" secondItem="3Ah-Fb-QHG" secondAttribute="top" id="3Pz-a2-4DC"/>
                             <constraint firstItem="3Ah-Fb-QHG" firstAttribute="trailing" secondItem="W7r-OK-2ef" secondAttribute="trailing" id="LLo-qj-pL9"/>
+                            <constraint firstItem="W7r-OK-2ef" firstAttribute="top" secondItem="WPj-18-yTA" secondAttribute="bottom" id="MTi-Gp-QMV"/>
+                            <constraint firstItem="3Ah-Fb-QHG" firstAttribute="trailing" secondItem="MqG-yh-FYs" secondAttribute="trailing" constant="16" id="Qv4-G4-6h9"/>
                             <constraint firstItem="3Ah-Fb-QHG" firstAttribute="trailing" secondItem="DnM-qc-iZk" secondAttribute="trailing" constant="50" id="UAx-3g-ivC"/>
                             <constraint firstItem="3Ah-Fb-QHG" firstAttribute="trailing" secondItem="WPj-18-yTA" secondAttribute="trailing" id="XKp-pP-XSd"/>
                             <constraint firstItem="WPj-18-yTA" firstAttribute="leading" secondItem="3Ah-Fb-QHG" secondAttribute="leading" id="Yt6-xY-ENG"/>
                             <constraint firstItem="W7r-OK-2ef" firstAttribute="leading" secondItem="3Ah-Fb-QHG" secondAttribute="leading" id="aqj-Bg-0Hc"/>
                             <constraint firstItem="WPj-18-yTA" firstAttribute="top" secondItem="3Ah-Fb-QHG" secondAttribute="top" constant="30" id="lZ5-2Z-4ai"/>
-                            <constraint firstItem="DnM-qc-iZk" firstAttribute="top" secondItem="W7r-OK-2ef" secondAttribute="bottom" constant="20" id="lne-CV-iZc"/>
-                            <constraint firstItem="W7r-OK-2ef" firstAttribute="top" secondItem="WPj-18-yTA" secondAttribute="bottom" id="x7z-N7-g6U"/>
+                            <constraint firstItem="DnM-qc-iZk" firstAttribute="top" secondItem="W7r-OK-2ef" secondAttribute="bottom" constant="16" id="lne-CV-iZc"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="colorPickerTableView" destination="W7r-OK-2ef" id="uk1-Rn-gI1"/>
+                        <outlet property="productImage" destination="WPj-18-yTA" id="LMs-2p-EFb"/>
                         <outlet property="showResultButton" destination="DnM-qc-iZk" id="90L-gj-jbM"/>
                     </connections>
                 </viewController>
@@ -664,6 +687,7 @@
         <image name="Icons_24px_ListView" width="24" height="24"/>
         <image name="Icons_44px_Back01" width="44" height="44"/>
         <image name="Image_Placeholder" width="375" height="375"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="B1">
             <color red="0.24705882352941178" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -672,6 +696,9 @@
         </namedColor>
         <namedColor name="B4">
             <color red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="B5">
+            <color red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

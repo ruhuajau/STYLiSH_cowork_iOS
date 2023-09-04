@@ -121,10 +121,10 @@ class ProductDetailViewController: STBaseViewController, ColorPickerDelegate, UI
     }
     
     func sendColorAnalysisButtonTapped() {
-        if let colorPickerViewController = storyboard?.instantiateViewController(withIdentifier: "\(ColorPickerViewController.self)") {
-            colorPickerViewController.modalPresentationStyle = .fullScreen
-            present(colorPickerViewController, animated: true)
-        }
+                if let colorPickerViewController = storyboard?.instantiateViewController(withIdentifier: "\(ColorPickerViewController.self)") {
+                    colorPickerViewController.modalPresentationStyle = .fullScreen
+                    present(colorPickerViewController, animated: true)
+                }
     }
     
     func showProductPickerView() {

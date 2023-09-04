@@ -10,8 +10,11 @@ import UIKit
 
 class ColorPickerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HairColorSelectionDelegate, SkinColorSelectionDelegate {
 
+    @IBOutlet weak var productImage: UIImageView!
+    
     var selectedHairColor: String?
     var selectedSkinColor: String?
+    var product: Product?
     
     @IBOutlet weak var colorPickerTableView: UITableView!
     
@@ -26,10 +29,11 @@ class ColorPickerViewController: UIViewController, UITableViewDelegate, UITableV
         
         showResultButton.isEnabled = false
         showResultButton.alpha = 0.6
+        //print(product)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110
+        return 90
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -84,4 +88,7 @@ class ColorPickerViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }
     
+    @IBAction func closeButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }
