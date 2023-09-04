@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EE8C0252AA58691003B205C /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8C0242AA58691003B205C /* ColorPickerViewController.swift */; };
 		30C2E5FF28B87D4700DD2939 /* TPDirect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30C2E5FE28B87D4700DD2939 /* TPDirect.framework */; };
 		3C09F5122211435B00C5B3E2 /* Lobby.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C09F5112211435B00C5B3E2 /* Lobby.storyboard */; };
 		3C09F51C22114A0100C5B3E2 /* STTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C09F51B22114A0100C5B3E2 /* STTabBarViewController.swift */; };
@@ -128,6 +129,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0EE8C0242AA58691003B205C /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		30C2E5FE28B87D4700DD2939 /* TPDirect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TPDirect.framework; sourceTree = "<group>"; };
 		3C09F5112211435B00C5B3E2 /* Lobby.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Lobby.storyboard; sourceTree = "<group>"; };
 		3C09F51B22114A0100C5B3E2 /* STTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STTabBarViewController.swift; sourceTree = "<group>"; };
@@ -485,6 +487,7 @@
 				3C41B8462216667000112F94 /* ProductViewController.swift */,
 				3C33863E221BB2B800ED97E4 /* ProductListViewController.swift */,
 				3CCB3BC3222AA8FD00976A1C /* ProductDetailViewController.swift */,
+				0EE8C0242AA58691003B205C /* ColorPickerViewController.swift */,
 				3C347949222E82F500969C30 /* AmountSelectionCell */,
 				3CDC5A68222D85B50071D0D1 /* SizeSelectionCell */,
 				3CDC5A64222D85080071D0D1 /* ColorSelectionCell */,
@@ -949,6 +952,7 @@
 				3C09F51E22114E1900C5B3E2 /* UIStoryboard+Extension.swift in Sources */,
 				3C0DD87E2213533F00F5237E /* LobbyTableViewCell.swift in Sources */,
 				3C33690E2226F53E008A5A7A /* TrolleyTableViewCell.swift in Sources */,
+				0EE8C0252AA58691003B205C /* ColorPickerViewController.swift in Sources */,
 				3CC706122216955900CAD850 /* STBaseNavigationController.swift in Sources */,
 				3C8F191922E5997B00EECE90 /* LobbyTableViewHeaderView.swift in Sources */,
 				3CE7A517223061A9009FF003 /* UserRequest.swift in Sources */,
