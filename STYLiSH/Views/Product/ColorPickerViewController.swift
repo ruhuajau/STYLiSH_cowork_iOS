@@ -8,9 +8,14 @@
 
 import UIKit
 
-class ColorPickerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ColorPickerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HairColorSelectionDelegate, SkinColorSelectionDelegate {
 
+    var selectedHairColor: String?
+    var selectedSkinColor: String?
+    
     @IBOutlet weak var colorPickerTableView: UITableView!
+    
+    @IBOutlet weak var showResultButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +24,8 @@ class ColorPickerViewController: UIViewController, UITableViewDelegate, UITableV
         colorPickerTableView.dataSource = self
         colorPickerTableView.separatorColor = .none
         
+        showResultButton.isEnabled = false
+        showResultButton.alpha = 0.6
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -40,9 +47,11 @@ class ColorPickerViewController: UIViewController, UITableViewDelegate, UITableV
                 return cell }
         case 1:
             if let cell = (tableView.dequeueReusableCell(withIdentifier: "ColorPickerHairTableViewCell", for: indexPath) as? ColorPickerHairTableViewCell) {
+                cell.delegate = self
                 return cell }
         case 2:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "ColorPickerSkinTableViewCell", for: indexPath) as? ColorPickerSkinTableViewCell {
+                cell.delegate = self
                 return cell }
         default:
             break
@@ -50,5 +59,29 @@ class ColorPickerViewController: UIViewController, UITableViewDelegate, UITableV
         return UITableViewCell()
     }
 
+    func didSelectHairColor(_ colorCode: String) {
+        self.selectedHairColor = colorCode
+        print("hair:\(colorCode)")
+        checkEnableShowResultButton()
+    }
+    
+    func didSelectSkinColor(_ colorCode: String) {
+        self.selectedSkinColor = colorCode
+        print("skin:\(colorCode)")
+        checkEnableShowResultButton()
+    }
+
+    // Function to check and enable/disable the showResultButton
+        private func checkEnableShowResultButton() {
+            if let hairColor = self.selectedHairColor, let skinColor = self.selectedSkinColor {
+                // Both colors are selected, enable the button
+                showResultButton.isEnabled = true
+                showResultButton.alpha = 1
+            } else {
+                // At least one color is missing, disable the button
+                showResultButton.isEnabled = false
+                showResultButton.alpha = 0.6
+            }
+        }
     
 }

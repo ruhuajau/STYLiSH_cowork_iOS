@@ -40,6 +40,5 @@ class ProductDescriptionTableViewCell: ProductBasicCell {
     
     @IBAction func colorAnalysisButtonTapped(_ sender: Any) {
         delegate?.sendColorAnalysisButtonTapped()
-        print("tapped in cell")
     }
 }

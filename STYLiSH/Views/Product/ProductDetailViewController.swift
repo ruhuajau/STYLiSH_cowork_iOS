@@ -10,6 +10,7 @@ import UIKit
 
 class ProductDetailViewController: STBaseViewController, ColorPickerDelegate, UITableViewDelegate {
 
+    
     private struct Segue {
         static let picker = "SeguePicker"
     }
@@ -120,7 +121,6 @@ class ProductDetailViewController: STBaseViewController, ColorPickerDelegate, UI
     }
     
     func sendColorAnalysisButtonTapped() {
-        print("tapped")
         if let colorPickerViewController = storyboard?.instantiateViewController(withIdentifier: "\(ColorPickerViewController.self)") {
             colorPickerViewController.modalPresentationStyle = .fullScreen
             present(colorPickerViewController, animated: true)
@@ -174,7 +174,6 @@ extension ProductDetailViewController: UITableViewDataSource {
             // Check if the cell is of type ProductDescriptionTableViewCell and set its delegate
             if let descriptionCell = cell as? ProductDescriptionTableViewCell {
                 descriptionCell.delegate = self
-                print("cell delegate set")
             }
         return cell
     }
