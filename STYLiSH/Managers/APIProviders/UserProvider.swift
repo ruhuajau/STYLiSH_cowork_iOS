@@ -27,14 +27,16 @@ class UserProvider {
             switch result {
             case .success(let data):
                 do {
-                    let userObject = try JSONDecoder().decode(STSuccessParser<UserObject>.self, from: data)
-                    KeyChainManager.shared.token = userObject.data.accessToken
+                    let userObject = try JSONDecoder().decode(UserObject.self, from: data)
+                    KeyChainManager.shared.token = userObject.accessToken
                     completion(Result.success(()))
                 } catch {
                     completion(Result.failure(error))
+                    print(error.localizedDescription)
                 }
             case .failure(let error):
                 completion(Result.failure(error))
+                print(error.localizedDescription)
             }
         })
     }
@@ -45,14 +47,16 @@ class UserProvider {
                 switch result {
                 case .success(let data):
                     do {
-                        let userObject = try JSONDecoder().decode(STSuccessParser<UserObject>.self, from: data)
-                        KeyChainManager.shared.token = userObject.data.accessToken
+                        let userObject = try JSONDecoder().decode(UserObject.self, from: data)
+                        KeyChainManager.shared.token = userObject.accessToken
                         completion(Result.success(()))
                     } catch {
                         completion(Result.failure(error))
+                        print(error.localizedDescription)
                     }
                 case .failure(let error):
                     completion(Result.failure(error))
+                    print(error.localizedDescription)
                 }
             })
         }

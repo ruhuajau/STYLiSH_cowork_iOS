@@ -61,10 +61,10 @@ enum STUserRequest: STRequest {
     
     var endPoint: String {
         switch self {
-            case .signin: return "/user/signin"
-            case .signup: return "/user/signup"
+            case .signin: return "/signin"
+            case .signup: return "/signup"
             case .checkout: return "/order/checkout"
-            case .profile: return "/user/profile"
+            case .profile: return "/profile"
         }
     }
 }

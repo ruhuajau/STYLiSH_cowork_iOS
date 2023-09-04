@@ -23,7 +23,9 @@ class LobbyViewController: STBaseViewController {
     }
 
     private let marketProvider = MarketProvider()
-
+    
+    private let trackingProvider = TrackingProvider()
+    
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +34,7 @@ class LobbyViewController: STBaseViewController {
         
         lobbyView.beginHeaderRefresh()
     }
-
+    
     // MARK: - Action
     private func fetchData() {
         marketProvider.fetchHots(completion: { [weak self] result in

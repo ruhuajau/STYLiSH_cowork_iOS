@@ -15,7 +15,8 @@ enum STTrackingRequest: STRequest {
         eventDate: String,
         eventTimestamp: Int,
         eventType: String,
-        eventValue: String
+        eventValue: String,
+        splitTesting: String
     )
 
     var headers: [String: String] {
@@ -26,15 +27,16 @@ enum STTrackingRequest: STRequest {
 
     var body: Data? {
         switch self {
-            case .trackEvent(let cid, let memberID, let eventDate, let eventTimestamp, let eventType, let eventValue):
+            case .trackEvent(let cid, let memberID, let eventDate, let eventTimestamp, let eventType, let eventValue, let splitTesting):
             let dict: [String: Any] = [
                 "cid": cid,
-                "member_id": memberID ?? "None",
+                "member_id": memberID,
                 "device_os": "iOS",
                 "event_date": eventDate,
                 "event_timestamp": eventTimestamp,
                 "event_type": eventType,
-                "event_value": eventValue
+                "event_value": eventValue,
+                "split_testing": splitTesting
             ]
             return try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
         }

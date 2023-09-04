@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import JGProgressHUD
+import IQKeyboardManagerSwift
 
 class AuthViewController: STBaseViewController {
     
@@ -20,6 +22,9 @@ class AuthViewController: STBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        IQKeyboardManager.shared.enable = isEnableIQKeyboard
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = isEnableResignOnTouchOutside
+        
         contentView.isHidden = true
     }
     
@@ -28,6 +33,11 @@ class AuthViewController: STBaseViewController {
         UIView.animate(withDuration: 1, animations: { [weak self] in
             self?.contentView.isHidden = false
         })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        IQKeyboardManager.shared.enable = !isEnableIQKeyboard
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = !isEnableResignOnTouchOutside
     }
     
     @IBAction func dismissView(_ sender: UIButton) {
@@ -48,36 +58,51 @@ class AuthViewController: STBaseViewController {
             switch result {
                 case .success:
                     LKProgressHUD.showSuccess(text: "STYLiSH 登入成功")
+                    print("STYLiSH 登入成功")
                 case .failure:
                     LKProgressHUD.showSuccess(text: "STYLiSH 登入失敗!")
+                    print("STYLiSH 登入失敗")
             }
             DispatchQueue.main.async {
                 self?.presentingViewController?.dismiss(animated: false, completion: nil)
+                
+                guard let lobbyVC = UIStoryboard.lobby.instantiateInitialViewController() else { return }
+                lobbyVC.modalPresentationStyle = .overCurrentContext
+                self?.present(lobbyVC, animated: false, completion: nil)
             }
         })
     }
     
     @IBAction func onNativeSignUp(_ sender: Any) {
         LKProgressHUD.show()
-          
-          guard let email = emailTextField.text, let password = passwordTextField.text else {
-              LKProgressHUD.dismiss()
-              return
-          }
-          
-          userProvider.nativeSignup(email: email, password: password, completion: { [weak self] result in
-              LKProgressHUD.dismiss()
-              
-              switch result {
-              case .success:
-                  LKProgressHUD.showSuccess(text: "STYLiSH 註冊成功")
-              case .failure:
-                  LKProgressHUD.showSuccess(text: "STYLiSH 註冊失敗!")
-              }
-              DispatchQueue.main.async {
-                  self?.presentingViewController?.dismiss(animated: false, completion: nil)
-              }
-          })
+        
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            LKProgressHUD.dismiss()
+            return
+        }
+        
+        userProvider.nativeSignup(email: email, password: password, completion: { [weak self] result in
+            LKProgressHUD.dismiss()
+            print(email)
+            print(password)
+            switch result {
+                case .success:
+                    LKProgressHUD.showSuccess(text: "STYLiSH 註冊成功")
+                    let alert = UIAlertController(title: "註冊成功", message: "已註冊", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "OK", style: .default)
+                    alert.addAction(action)
+                    self?.present(alert, animated: true)
+                case .failure:
+                    LKProgressHUD.showSuccess(text: "STYLiSH 註冊失敗!")
+            }
+            DispatchQueue.main.async {
+                self?.presentingViewController?.dismiss(animated: false, completion: nil)
+                
+                guard let lobbyVC = UIStoryboard.lobby.instantiateInitialViewController() else { return }
+                lobbyVC.modalPresentationStyle = .overCurrentContext
+                self?.present(lobbyVC, animated: false, completion: nil)
+            }
+        })
     }
     
     //    @IBAction func onFacebookLogin() {
@@ -108,4 +133,3 @@ class AuthViewController: STBaseViewController {
 //            }
 //        })
 //    }
-
