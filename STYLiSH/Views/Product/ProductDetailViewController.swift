@@ -121,6 +121,10 @@ class ProductDetailViewController: STBaseViewController, ColorPickerDelegate, UI
     
     func sendColorAnalysisButtonTapped() {
         print("tapped")
+        if let colorPickerViewController = storyboard?.instantiateViewController(withIdentifier: "\(ColorPickerViewController.self)") {
+            colorPickerViewController.modalPresentationStyle = .fullScreen
+            present(colorPickerViewController, animated: true)
+        }
     }
     
     func showProductPickerView() {
@@ -172,7 +176,6 @@ extension ProductDetailViewController: UITableViewDataSource {
                 descriptionCell.delegate = self
                 print("cell delegate set")
             }
-
         return cell
     }
 }
