@@ -8,12 +8,15 @@
 
 import UIKit
 import Shuffle_iOS
+import Kingfisher
 
 class SwipeViewController: UIViewController {
     
     private let cardStack = SwipeCardStack()
     
     private let buttonStackView = ButtonStackView()
+    
+    private let featureProvider = FeatureProvider()
     
     private let questionLabel: UILabel = {
         let label = UILabel()
@@ -36,14 +39,14 @@ class SwipeViewController: UIViewController {
         return modalView
     }()
     
-    private let cardModels = [
-        TinderCardModel(image: UIImage(named: "michelle")),
-        TinderCardModel(image: UIImage(named: "joshua")),
-        TinderCardModel(image: UIImage(named: "daiane")),
-        TinderCardModel(image: UIImage(named: "julian")),
-        TinderCardModel(image: UIImage(named: "andrew")),
-        TinderCardModel(image: UIImage(named: "bailey")),
-        TinderCardModel(image: UIImage(named: "rachel"))
+    private var cardModels: [TinderCardModel] = [
+        TinderCardModel(image: nil),
+        TinderCardModel(image: nil),
+        TinderCardModel(image: nil),
+        TinderCardModel(image: nil),
+        TinderCardModel(image: nil),
+        TinderCardModel(image: nil),
+        TinderCardModel(image: nil)
     ]
     
     override func viewDidLoad() {
@@ -58,6 +61,8 @@ class SwipeViewController: UIViewController {
         layoutButtonStackView()
         configureBackgroundGradient()
         layoutModalView()
+        
+        getProductTinder()
     }
     
     private func configureNavigationBar() {
@@ -122,7 +127,7 @@ class SwipeViewController: UIViewController {
         let rightArrowImageView = UIImageView(image: UIImage(named: "icons8-arrow-48_right"))
         let likeButtonImageView = UIImageView(image: UIImage(named: "heart"))
         let passButtonImageView = UIImageView(image: UIImage(named: "pass"))
-
+        
         modalView.addSubview(closeButton)
         modalView.addSubview(leftArrowImageView)
         modalView.addSubview(rightArrowImageView)
@@ -165,6 +170,36 @@ class SwipeViewController: UIViewController {
         
     }
     
+    private func getProductTinder() {
+        featureProvider.getProductTinder { result in
+            switch result {
+                case .success(let tinderObject):
+                    let imageURLs = tinderObject.data.images
+                    
+                    guard let imageURLs = imageURLs else { return }
+                    
+//                    for (index, imageURL) in imageURLs.enumerated() {
+//                        KingfisherManager.shared.retrieveImage(with: ImageResource(downloadURL: URL(string: imageURL)!), completionHandler: { result in
+//                            switch result {
+//                            case .success(let image):
+//                                self.cardModels[index].image = image
+//                            case .failure(let error):
+//                                print("Error: \(error)")
+//                            }
+//                        })
+//                    }
+                    
+                    
+                    // Print or use the retrieved data as needed
+                    print("Images: \(imageURLs)")
+                    
+                case .failure(let error):
+                    // Handle the error
+                    print("Error fetching ProductTinder: \(error)")
+            }
+        }
+    }
+    
     @objc
     private func handleShift(_ sender: UIButton) {
         cardStack.shift(withDistance: sender.tag == 1 ? -1 : 1, animated: true)
@@ -190,7 +225,7 @@ extension SwipeViewController: ButtonStackViewDelegate, SwipeCardStackDataSource
         
         let model = cardModels[index]
         card.content = TinderCardContentView(withImage: model.image)
-//        card.footer = TinderCardFooterView(withTitle: "\(model.name), \(model.age)", subtitle: model.occupation)
+        //        card.footer = TinderCardFooterView(withTitle: "\(model.name), \(model.age)", subtitle: model.occupation)
         
         return card
     }
@@ -210,11 +245,11 @@ extension SwipeViewController: ButtonStackViewDelegate, SwipeCardStackDataSource
     }
     
     func cardStack(_ cardStack: SwipeCardStack, didUndoCardAt index: Int, from direction: SwipeDirection) {
-//        print("Undo \(direction) swipe on \(cardModels[index].name)")
+        //        print("Undo \(direction) swipe on \(cardModels[index].name)")
     }
     
     func cardStack(_ cardStack: SwipeCardStack, didSwipeCardAt index: Int, with direction: SwipeDirection) {
-//        print("Swiped \(direction) on \(cardModels[index].name)")
+        //        print("Swiped \(direction) on \(cardModels[index].name)")
     }
     
     func cardStack(_ cardStack: SwipeCardStack, didSelectCardAt index: Int) {

@@ -12,6 +12,16 @@ import IQKeyboardManagerSwift
 
 class AuthViewController: STBaseViewController {
     
+    private let trackingProvider = TrackingProvider()
+    
+    private var cid: String?
+    
+    private var memberID: String?
+    
+    private var eventDate: String?
+    
+    private var eventTimestamp: Int?
+    
     @IBOutlet weak var contentView: UIView!
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -28,6 +38,10 @@ class AuthViewController: STBaseViewController {
         contentView.isHidden = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        postTrackingEvent()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIView.animate(withDuration: 1, animations: { [weak self] in
@@ -38,6 +52,47 @@ class AuthViewController: STBaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         IQKeyboardManager.shared.enable = !isEnableIQKeyboard
         IQKeyboardManager.shared.shouldResignOnTouchOutside = !isEnableResignOnTouchOutside
+    }
+    
+    private func postTrackingEvent() {
+        print("進入註冊登入頁")
+        if let cid = UserDataManager.shared.cid {
+            self.cid = cid
+        } else {
+            let newUUID = UUID()
+            let cidString = newUUID.uuidString
+            UserDataManager.shared.cid = cidString
+            self.cid = cidString
+        }
+        
+        if let memberID = UserDataManager.shared.memberID {
+            self.memberID = memberID
+        }
+        
+        configureEventDate()
+        configureEventTimestamp()
+        // swiftlint:disable:next line_length
+        trackingProvider.trackEvent(cid: cid!, memberID: memberID, eventDate: eventDate!, eventTimestamp: eventTimestamp!, eventType: "view", eventValue: "signin_signup", splitTesting: "fresh") { result in
+            switch result {
+                case .success:
+                    print("Tracking event success.")
+                case .failure(let error):
+                    print("Tracking event error: \(error)")
+            }
+        }
+    }
+    
+    func configureEventDate() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let currentDate = Date()
+        let formattedDate = dateFormatter.string(from: currentDate)
+        eventDate = formattedDate
+    }
+    
+    func configureEventTimestamp() {
+        let currentTimestamp = Int(Date().timeIntervalSince1970)
+        eventTimestamp = currentTimestamp
     }
     
     @IBAction func dismissView(_ sender: UIButton) {
@@ -59,16 +114,15 @@ class AuthViewController: STBaseViewController {
                 case .success:
                     LKProgressHUD.showSuccess(text: "STYLiSH 登入成功")
                     print("STYLiSH 登入成功")
+                    DispatchQueue.main.async {
+                        guard let mainVC = UIStoryboard.main.instantiateInitialViewController() else { return }
+                        mainVC.modalPresentationStyle = .overCurrentContext
+                        self?.present(mainVC, animated: false, completion: nil)
+                    }
+                    
                 case .failure:
                     LKProgressHUD.showSuccess(text: "STYLiSH 登入失敗!")
                     print("STYLiSH 登入失敗")
-            }
-            DispatchQueue.main.async {
-                self?.presentingViewController?.dismiss(animated: false, completion: nil)
-                
-                guard let lobbyVC = UIStoryboard.lobby.instantiateInitialViewController() else { return }
-                lobbyVC.modalPresentationStyle = .overCurrentContext
-                self?.present(lobbyVC, animated: false, completion: nil)
             }
         })
     }
@@ -88,19 +142,13 @@ class AuthViewController: STBaseViewController {
             switch result {
                 case .success:
                     LKProgressHUD.showSuccess(text: "STYLiSH 註冊成功")
-                    let alert = UIAlertController(title: "註冊成功", message: "已註冊", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "OK", style: .default)
-                    alert.addAction(action)
-                    self?.present(alert, animated: true)
+                    DispatchQueue.main.async {
+                        guard let mainVC = UIStoryboard.main.instantiateInitialViewController() else { return }
+                        mainVC.modalPresentationStyle = .overCurrentContext
+                        self?.present(mainVC, animated: false, completion: nil)
+                    }
                 case .failure:
                     LKProgressHUD.showSuccess(text: "STYLiSH 註冊失敗!")
-            }
-            DispatchQueue.main.async {
-                self?.presentingViewController?.dismiss(animated: false, completion: nil)
-                
-                guard let lobbyVC = UIStoryboard.lobby.instantiateInitialViewController() else { return }
-                lobbyVC.modalPresentationStyle = .overCurrentContext
-                self?.present(lobbyVC, animated: false, completion: nil)
             }
         })
     }

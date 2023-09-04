@@ -29,6 +29,8 @@ class UserProvider {
                 do {
                     let userObject = try JSONDecoder().decode(UserObject.self, from: data)
                     KeyChainManager.shared.token = userObject.accessToken
+                    guard let memberID = userObject.user.id else { fatalError("Cannot get member ID") }
+                    UserDataManager.shared.memberID = String(memberID)
                     completion(Result.success(()))
                 } catch {
                     completion(Result.failure(error))
@@ -49,6 +51,8 @@ class UserProvider {
                     do {
                         let userObject = try JSONDecoder().decode(UserObject.self, from: data)
                         KeyChainManager.shared.token = userObject.accessToken
+                        guard let memberID = userObject.user.id else { fatalError("Cannot get member ID") }
+                        UserDataManager.shared.memberID = String(memberID)
                         completion(Result.success(()))
                     } catch {
                         completion(Result.failure(error))

@@ -9,6 +9,16 @@
 import UIKit
 
 class ProductDetailViewController: STBaseViewController {
+    
+    private let trackingProvider = TrackingProvider()
+    
+    private var cid: String?
+    
+    private var memberID: String?
+    
+    private var eventDate: String?
+    
+    private var eventTimestamp: Int?
 
     private struct Segue {
         static let picker = "SeguePicker"
@@ -65,6 +75,11 @@ class ProductDetailViewController: STBaseViewController {
         guard let product = product else { return }
         galleryView.datas = product.images
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        postTrackingEventDetail()
+        print("進detail page")
+    }
 
     private func setupTableView() {
         tableView.lk_registerCellWithNib(
@@ -91,6 +106,74 @@ class ProductDetailViewController: STBaseViewController {
     }
 
     // MARK: - Action
+    private func postTrackingEventDetail() {
+        if let cid = UserDataManager.shared.cid {
+            self.cid = cid
+        } else {
+            let newUUID = UUID()
+            let cidString = newUUID.uuidString
+            UserDataManager.shared.cid = cidString
+            self.cid = cidString
+        }
+        
+        if let memberID = UserDataManager.shared.memberID {
+            self.memberID = memberID
+        }
+        
+        configureEventDate()
+        configureEventTimestamp()
+        // swiftlint:disable:next line_length
+        trackingProvider.trackEvent(cid: cid!, memberID: memberID, eventDate: eventDate!, eventTimestamp: eventTimestamp!, eventType: "view", eventValue: "product_detail", splitTesting: "fresh") { result in
+            switch result {
+                case .success:
+                    print("Tracking event success.")
+                case .failure(let error):
+                    print("Tracking event error: \(error)")
+            }
+        }
+    }
+    
+    func postTrackingEventCart() {
+        print("進入購物車")
+        if let cid = UserDataManager.shared.cid {
+            self.cid = cid
+        } else {
+            let newUUID = UUID()
+            let cidString = newUUID.uuidString
+            UserDataManager.shared.cid = cidString
+            self.cid = cidString
+        }
+        
+        if let memberID = UserDataManager.shared.memberID {
+            self.memberID = memberID
+        }
+        
+        configureEventDate()
+        configureEventTimestamp()
+        
+        trackingProvider.trackEvent(cid: cid!, memberID: memberID, eventDate: eventDate!, eventTimestamp: eventTimestamp!, eventType: "view", eventValue: "cart", splitTesting: "fresh") { result in
+            switch result {
+                case .success:
+                    print("Tracking event success.")
+                case .failure(let error):
+                    print("Tracking event error: \(error)")
+            }
+        }
+    }
+    
+    func configureEventDate() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let currentDate = Date()
+        let formattedDate = dateFormatter.string(from: currentDate)
+        eventDate = formattedDate
+    }
+    
+    func configureEventTimestamp() {
+        let currentTimestamp = Int(Date().timeIntervalSince1970)
+        eventTimestamp = currentTimestamp
+    }
+    
     @IBAction func didTouchAddToCarBtn(_ sender: UIButton) {
         if productPickerView.superview == nil {
             showProductPickerView()
@@ -119,6 +202,8 @@ class ProductDetailViewController: STBaseViewController {
     }
 
     func showProductPickerView() {
+        postTrackingEventCart()
+        
         let maxY = tableView.frame.maxY
         productPickerView.frame = CGRect(
             x: 0, y: maxY, width: UIScreen.width, height: 0.0

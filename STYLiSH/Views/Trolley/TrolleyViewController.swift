@@ -10,6 +10,16 @@ import UIKit
 
 class TrolleyViewController: STBaseViewController {
 
+    private let trackingProvider = TrackingProvider()
+    
+    private var cid: String?
+    
+    private var memberID: String?
+    
+    private var eventDate: String?
+    
+    private var eventTimestamp: Int?
+    
     private struct Segue {
         static let checkout = "SegueCheckout"
     }
@@ -50,6 +60,10 @@ class TrolleyViewController: STBaseViewController {
 
         fetchData()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        postTrackingEvent()
+    }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -58,6 +72,48 @@ class TrolleyViewController: STBaseViewController {
     }
     
     // MARK: - Action
+    private func postTrackingEvent() {
+        print("進入購物車")
+        if let cid = UserDataManager.shared.cid {
+            self.cid = cid
+        } else {
+            let newUUID = UUID()
+            let cidString = newUUID.uuidString
+            UserDataManager.shared.cid = cidString
+            self.cid = cidString
+        }
+        
+        if let memberID = UserDataManager.shared.memberID {
+            self.memberID = memberID
+        }
+        
+        configureEventDate()
+        configureEventTimestamp()
+        
+        trackingProvider.trackEvent(cid: cid!, memberID: memberID, eventDate: eventDate!, eventTimestamp: eventTimestamp!, eventType: "view", eventValue: "cart", splitTesting: "fresh") { result in
+            switch result {
+                case .success:
+                    print("Tracking event success.")
+                case .failure(let error):
+                    print("Tracking event error: \(error)")
+            }
+        }
+    }
+    
+    func configureEventDate() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let currentDate = Date()
+        let formattedDate = dateFormatter.string(from: currentDate)
+        eventDate = formattedDate
+    }
+    
+    func configureEventTimestamp() {
+        let currentTimestamp = Int(Date().timeIntervalSince1970)
+        eventTimestamp = currentTimestamp
+    }
+    
+    
     private func fetchData() {
         observation = StorageManager.shared.observe(
             \.orders,

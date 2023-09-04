@@ -9,6 +9,16 @@
 import UIKit
 
 class LobbyViewController: STBaseViewController {
+    
+    private let trackingProvider = TrackingProvider()
+    
+    private var cid: String?
+    
+    private var memberID: String?
+    
+    private var eventDate: String?
+    
+    private var eventTimestamp: Int?
 
     @IBOutlet weak var lobbyView: LobbyView! {
         didSet {
@@ -24,8 +34,6 @@ class LobbyViewController: STBaseViewController {
 
     private let marketProvider = MarketProvider()
     
-    private let trackingProvider = TrackingProvider()
-    
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +43,54 @@ class LobbyViewController: STBaseViewController {
         lobbyView.beginHeaderRefresh()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        postTrackingEvent()
+    }
+    
     // MARK: - Action
+    
+    private func postTrackingEvent() {
+        print("進入hots")
+        if let cid = UserDataManager.shared.cid {
+            self.cid = cid
+        } else {
+            let newUUID = UUID()
+            let cidString = newUUID.uuidString
+            UserDataManager.shared.cid = cidString
+            self.cid = cidString
+        }
+        
+        if let memberID = UserDataManager.shared.memberID {
+            self.memberID = memberID
+        }
+        
+        configureEventDate()
+        configureEventTimestamp()
+        
+        trackingProvider.trackEvent(cid: cid!, memberID: memberID, eventDate: eventDate!, eventTimestamp: eventTimestamp!, eventType: "view", eventValue: "hots", splitTesting: "fresh") { result in
+            switch result {
+                case .success:
+                    print("cid: \(self.cid), memberID: \(self.memberID), eventDate: \(self.eventDate), eventTimestamp: \(self.eventTimestamp)")
+                    print("Tracking event success.")
+                case .failure(let error):
+                    print("Tracking event error: \(error)")
+            }
+        }
+    }
+    
+    func configureEventDate() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let currentDate = Date()
+        let formattedDate = dateFormatter.string(from: currentDate)
+        eventDate = formattedDate
+    }
+    
+    func configureEventTimestamp() {
+        let currentTimestamp = Int(Date().timeIntervalSince1970)
+        eventTimestamp = currentTimestamp
+    }
+    
     private func fetchData() {
         marketProvider.fetchHots(completion: { [weak self] result in
             switch result {

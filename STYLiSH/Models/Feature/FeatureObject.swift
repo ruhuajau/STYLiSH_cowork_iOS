@@ -22,3 +22,13 @@ struct ColorResponse: Codable {
         case recommendColor = "recommend_color"
     }
 }
+
+struct TinderObject: Codable {
+    let data: Datum
+}
+
+// MARK: - Datum
+struct Datum: Codable {
+    let images: [String]?
+    let style: [String]?
+}
