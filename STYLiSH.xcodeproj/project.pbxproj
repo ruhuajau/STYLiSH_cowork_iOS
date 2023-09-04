@@ -125,6 +125,11 @@
 		3CFAC67322EEF71C00785FAB /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFAC67222EEF71C00785FAB /* String+Extension.swift */; };
 		58A77AA0262F3CC800B88679 /* LSColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A77A9F262F3CC800B88679 /* LSColor+Extension.swift */; };
 		D306B883B370DFD3ED8ACD74 /* Pods_STYLiSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C2B4AF3EF2ABFF2BB9F7AB /* Pods_STYLiSH.framework */; };
+		DB036E742AA478AE00906A82 /* FeatureRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB036E732AA478AE00906A82 /* FeatureRequest.swift */; };
+		DB2208922AA4D56900F0422A /* TrackingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2208912AA4D56900F0422A /* TrackingRequest.swift */; };
+		DB2208942AA4D98B00F0422A /* TrackingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2208932AA4D98B00F0422A /* TrackingProvider.swift */; };
+		DB2208962AA4DECA00F0422A /* FeatureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2208952AA4DECA00F0422A /* FeatureProvider.swift */; };
+		DB2208982AA4DFA000F0422A /* FeatureObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2208972AA4DFA000F0422A /* FeatureObject.swift */; };
 		DB72933B2AA2D8F400C591E3 /* Swipe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB72933A2AA2D8F400C591E3 /* Swipe.storyboard */; };
 		DB72933D2AA2D90200C591E3 /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB72933C2AA2D90200C591E3 /* SwipeViewController.swift */; };
 		DB907F5E2AA2DAB900A6CD1B /* TinderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB907F5C2AA2DAB800A6CD1B /* TinderButton.swift */; };
@@ -269,6 +274,11 @@
 		3CFAC67222EEF71C00785FAB /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		42C2B4AF3EF2ABFF2BB9F7AB /* Pods_STYLiSH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_STYLiSH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A77A9F262F3CC800B88679 /* LSColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LSColor+Extension.swift"; sourceTree = "<group>"; };
+		DB036E732AA478AE00906A82 /* FeatureRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureRequest.swift; sourceTree = "<group>"; };
+		DB2208912AA4D56900F0422A /* TrackingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingRequest.swift; sourceTree = "<group>"; };
+		DB2208932AA4D98B00F0422A /* TrackingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingProvider.swift; sourceTree = "<group>"; };
+		DB2208952AA4DECA00F0422A /* FeatureProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureProvider.swift; sourceTree = "<group>"; };
+		DB2208972AA4DFA000F0422A /* FeatureObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureObject.swift; sourceTree = "<group>"; };
 		DB72933A2AA2D8F400C591E3 /* Swipe.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Swipe.storyboard; sourceTree = "<group>"; };
 		DB72933C2AA2D90200C591E3 /* SwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
 		DB907F5C2AA2DAB800A6CD1B /* TinderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinderButton.swift; sourceTree = "<group>"; };
@@ -595,6 +605,8 @@
 		3CD2913022113CF3008B8A2D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DB2208902AA4D55700F0422A /* Tracking */,
+				DB036E722AA4788400906A82 /* Feature */,
 				3CE7A51A2230899D009FF003 /* OrderProvider */,
 				3CE7A51122305904009FF003 /* User */,
 				3CEBE075222F714A0064EF82 /* Local Storage */,
@@ -725,11 +737,30 @@
 			isa = PBXGroup;
 			children = (
 				3CE7A51B223089C3009FF003 /* OrderProvider.swift */,
+				DB2208932AA4D98B00F0422A /* TrackingProvider.swift */,
 				3CE7A51222305916009FF003 /* UserProvider.swift */,
 				3CED4C0B22141E9700121D4B /* MarketProvider.swift */,
 				3CA25518222A484300B286F6 /* ProductsListProvider.swift */,
+				DB2208952AA4DECA00F0422A /* FeatureProvider.swift */,
 			);
 			path = APIProviders;
+			sourceTree = "<group>";
+		};
+		DB036E722AA4788400906A82 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				DB036E732AA478AE00906A82 /* FeatureRequest.swift */,
+				DB2208972AA4DFA000F0422A /* FeatureObject.swift */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		DB2208902AA4D55700F0422A /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				DB2208912AA4D56900F0422A /* TrackingRequest.swift */,
+			);
+			path = Tracking;
 			sourceTree = "<group>";
 		};
 		DB7293392AA2D8E700C591E3 /* Swipe */ = {
@@ -957,6 +988,7 @@
 				3CEBE07A222F72600064EF82 /* STYLiSH.xcdatamodeld in Sources */,
 				3CDC5A66222D85990071D0D1 /* ColorSelectionCell.swift in Sources */,
 				3C6020D8222B883600312958 /* ProductDescriptionTableViewCell.swift in Sources */,
+				DB036E742AA478AE00906A82 /* FeatureRequest.swift in Sources */,
 				3C0DD876221348E900F5237E /* LobbyViewController.swift in Sources */,
 				3C33691F2227DC7B008A5A7A /* TrolleySelectionView.swift in Sources */,
 				3C831C6422E9AF8F00112298 /* STOrderUserInputCell.swift in Sources */,
@@ -965,6 +997,7 @@
 				3C831C8A22EAAF7A00112298 /* STPaymentInfoTableViewCell.swift in Sources */,
 				DB907F612AA2DBD500A6CD1B /* UIView+Extensions.swift in Sources */,
 				3C990F6C22E5C78200F2FCEA /* ProductDetailView.swift in Sources */,
+				DB2208982AA4DFA000F0422A /* FeatureObject.swift in Sources */,
 				3C546BE722EAC79D0082C655 /* STOrderHeaderView.swift in Sources */,
 				3C5DD7CC2227EFFF0053B67A /* TrolleyViewController.swift in Sources */,
 				3C6020EA222BC00100312958 /* UILabel+Extension.swift in Sources */,
@@ -983,10 +1016,12 @@
 				3CED4C0A2214192100121D4B /* Product.swift in Sources */,
 				3C33691A2227D20B008A5A7A /* UIView+Extension.swift in Sources */,
 				3CB8011E22299B460029A552 /* STCompondViewController.swift in Sources */,
+				DB2208942AA4D98B00F0422A /* TrackingProvider.swift in Sources */,
 				3CCB3BC4222AA8FD00976A1C /* ProductDetailViewController.swift in Sources */,
 				3C9EF5342213C5C800DEE152 /* HTTPClient.swift in Sources */,
 				3CEBE07C222F7A210064EF82 /* Int+Extension.swift in Sources */,
 				3CED80AE23012CE400B7DA8E /* NSLocalizedString+Extension.swift in Sources */,
+				DB2208922AA4D56900F0422A /* TrackingRequest.swift in Sources */,
 				3CA25519222A484300B286F6 /* ProductsListProvider.swift in Sources */,
 				3C3369162227CE7D008A5A7A /* TrolleyProductBaseView.swift in Sources */,
 				3CE7A50222302354009FF003 /* ProductContentCategory.swift in Sources */,
@@ -1015,6 +1050,7 @@
 				3CE7A51E22308D34009FF003 /* OrderObject.swift in Sources */,
 				3CD9BB35223B882C0012C00D /* AuthViewController.swift in Sources */,
 				58A77AA0262F3CC800B88679 /* LSColor+Extension.swift in Sources */,
+				DB2208962AA4DECA00F0422A /* FeatureProvider.swift in Sources */,
 				3CB801212229A0970029A552 /* KingFisherWrapper.swift in Sources */,
 				3CFAC67322EEF71C00785FAB /* String+Extension.swift in Sources */,
 				3C33863F221BB2B800ED97E4 /* ProductListViewController.swift in Sources */,
