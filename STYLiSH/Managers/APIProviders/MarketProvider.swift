@@ -66,7 +66,6 @@ class MarketProvider {
                     let response = try self.decoder.decode(STSuccessParser<[Product]>.self, from: data)
                     DispatchQueue.main.async {
                         completion(Result.success(response))
-                        print(response)
                     }
                 } catch {
                     completion(Result.failure(error))

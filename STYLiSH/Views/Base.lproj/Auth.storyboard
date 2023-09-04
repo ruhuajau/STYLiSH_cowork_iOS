@@ -107,6 +107,9 @@
                                                 <state key="normal" title="會員登入">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onNativeLogin:" destination="ZYD-N5-aSi" eventType="touchUpInside" id="hNL-Ty-cbQ"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkN-vy-SVd">
                                                 <rect key="frame" x="178" y="0.0" width="165" height="48"/>
@@ -117,6 +120,9 @@
                                                 <state key="normal" title="會員註冊">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onNativeSignUp:" destination="ZYD-N5-aSi" eventType="touchUpInside" id="Pyz-EN-HYp"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -187,6 +193,8 @@
                     </view>
                     <connections>
                         <outlet property="contentView" destination="YKh-PK-dkx" id="iqH-Ab-zkx"/>
+                        <outlet property="emailTextField" destination="rrA-FR-jks" id="ceu-Sp-apz"/>
+                        <outlet property="passwordTextField" destination="P0D-Oy-gy6" id="xAD-Tw-Kao"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ns5-wt-cWl" userLabel="First Responder" sceneMemberID="firstResponder"/>
