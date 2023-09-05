@@ -161,6 +161,34 @@ class ProductDetailViewController: STBaseViewController {
         }
     }
     
+    private func postTrackingEventClick() {
+        print("點擊加入購物車")
+        if let cid = UserDataManager.shared.cid {
+            self.cid = cid
+        } else {
+            let newUUID = UUID()
+            let cidString = newUUID.uuidString
+            UserDataManager.shared.cid = cidString
+            self.cid = cidString
+        }
+        
+        if let memberID = UserDataManager.shared.memberID {
+            self.memberID = memberID
+        }
+        
+        configureEventDate()
+        configureEventTimestamp()
+        // swiftlint:disable:next line_length
+        trackingProvider.trackEvent(cid: cid!, memberID: memberID, eventDate: eventDate!, eventTimestamp: eventTimestamp!, eventType: "click", eventValue: "cart_adding", splitTesting: "fresh") { result in
+            switch result {
+                case .success:
+                    print("Tracking event success.")
+                case .failure(let error):
+                    print("Tracking event error: \(error)")
+            }
+        }
+    }
+    
     func configureEventDate() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -175,6 +203,7 @@ class ProductDetailViewController: STBaseViewController {
     }
     
     @IBAction func didTouchAddToCarBtn(_ sender: UIButton) {
+        postTrackingEventClick()
         if productPickerView.superview == nil {
             showProductPickerView()
         } else {

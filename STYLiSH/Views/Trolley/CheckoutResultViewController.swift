@@ -30,9 +30,11 @@ class CheckoutResultViewController: STBaseViewController {
     
     override func backToRoot(_ sender: Any) {
         backToRoot(completion: {
-            let appdelegate = UIApplication.shared.delegate as? AppDelegate
-            let root = appdelegate?.window?.rootViewController as? STTabBarViewController
-            root?.selectedIndex = 0
+            //TODO: 更新
+//            let appdelegate = UIApplication.shared.delegate as? AppDelegate
+//            let root = appdelegate?.window?.rootViewController as? STTabBarViewController
+//            root?.selectedIndex = 0
+            
         })
     }
     
