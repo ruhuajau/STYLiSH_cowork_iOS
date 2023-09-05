@@ -137,6 +137,7 @@ class SwipeResultViewController: UIViewController {
         guard let mainVC = UIStoryboard.main.instantiateInitialViewController() else { return }
         mainVC.modalPresentationStyle = .overCurrentContext
         present(mainVC, animated: false, completion: nil)
+        print("UserData style: \(UserDataManager.shared.style)")
     }
     
 }
