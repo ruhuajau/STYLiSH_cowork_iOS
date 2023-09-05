@@ -13,6 +13,7 @@
 		0EE8C02C2AA5A9B9003B205C /* ColorPickerSkinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8C02B2AA5A9B9003B205C /* ColorPickerSkinTableViewCell.swift */; };
 		0EE8C02F2AA5B6B2003B205C /* ColorPickerHairCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8C02E2AA5B6B2003B205C /* ColorPickerHairCollectionViewCell.swift */; };
 		0EE8C0312AA5B6BD003B205C /* ColorPickerSkinCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8C0302AA5B6BD003B205C /* ColorPickerSkinCollectionViewCell.swift */; };
+		0EE8C0332AA6AFBD003B205C /* ShowColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8C0322AA6AFBD003B205C /* ShowColorViewController.swift */; };
 		30C2E5FF28B87D4700DD2939 /* TPDirect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30C2E5FE28B87D4700DD2939 /* TPDirect.framework */; };
 		3C09F5122211435B00C5B3E2 /* Lobby.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C09F5112211435B00C5B3E2 /* Lobby.storyboard */; };
 		3C09F51C22114A0100C5B3E2 /* STTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C09F51B22114A0100C5B3E2 /* STTabBarViewController.swift */; };
@@ -140,6 +141,7 @@
 		0EE8C02B2AA5A9B9003B205C /* ColorPickerSkinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerSkinTableViewCell.swift; sourceTree = "<group>"; };
 		0EE8C02E2AA5B6B2003B205C /* ColorPickerHairCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerHairCollectionViewCell.swift; sourceTree = "<group>"; };
 		0EE8C0302AA5B6BD003B205C /* ColorPickerSkinCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerSkinCollectionViewCell.swift; sourceTree = "<group>"; };
+		0EE8C0322AA6AFBD003B205C /* ShowColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowColorViewController.swift; sourceTree = "<group>"; };
 		30C2E5FE28B87D4700DD2939 /* TPDirect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TPDirect.framework; sourceTree = "<group>"; };
 		3C09F5112211435B00C5B3E2 /* Lobby.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Lobby.storyboard; sourceTree = "<group>"; };
 		3C09F51B22114A0100C5B3E2 /* STTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STTabBarViewController.swift; sourceTree = "<group>"; };
@@ -517,6 +519,7 @@
 				3C33863E221BB2B800ED97E4 /* ProductListViewController.swift */,
 				3CCB3BC3222AA8FD00976A1C /* ProductDetailViewController.swift */,
 				0EE8C0242AA58691003B205C /* ColorPickerViewController.swift */,
+				0EE8C0322AA6AFBD003B205C /* ShowColorViewController.swift */,
 				0EE8C0262AA5A96E003B205C /* ColorPickerTableViewCell */,
 				0EE8C02D2AA5B68E003B205C /* ColorPickerCollectionViewCell */,
 				3C347949222E82F500969C30 /* AmountSelectionCell */,
@@ -927,6 +930,7 @@
 				3C0DD87822134EC100F5237E /* UIFont+Extension.swift in Sources */,
 				3CE7A507223042CE009FF003 /* STBaseTextField.swift in Sources */,
 				3CB80E78222FCCC20095F18C /* Bundle+Extension.swift in Sources */,
+				0EE8C0332AA6AFBD003B205C /* ShowColorViewController.swift in Sources */,
 				3CE7A519223064C7009FF003 /* UserObject.swift in Sources */,
 				3CB801272229AFF10029A552 /* UICollectionView+Extension.swift in Sources */,
 				3C8F191B22E5BA9F00EECE90 /* LobbyView.swift in Sources */,
