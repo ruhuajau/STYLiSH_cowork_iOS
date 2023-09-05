@@ -15,6 +15,16 @@ protocol ProductListDataProvider {
 class ProductListViewController: STCompondViewController {
 
     var provider: ProductListDataProvider?
+    
+    private let trackingProvider = TrackingProvider()
+    
+    private var cid: String?
+    
+    private var memberID: String?
+    
+    private var eventDate: String?
+    
+    private var eventTimestamp: Int?
 
     private var paging: Int? = 0
 
@@ -105,6 +115,47 @@ class ProductListViewController: STCompondViewController {
         detailVC.product = product
         show(detailVC, sender: nil)
     }
+    
+    func configureEventDate() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let currentDate = Date()
+        let formattedDate = dateFormatter.string(from: currentDate)
+        eventDate = formattedDate
+    }
+    
+    func configureEventTimestamp() {
+        let currentTimestamp = Int(Date().timeIntervalSince1970)
+        eventTimestamp = currentTimestamp
+    }
+    
+    private func postTrackingEventClick() {
+        print("點擊女裝/男裝/配件商品資訊")
+        if let cid = UserDataManager.shared.cid {
+            self.cid = cid
+        } else {
+            let newUUID = UUID()
+            let cidString = newUUID.uuidString
+            UserDataManager.shared.cid = cidString
+            self.cid = cidString
+        }
+        
+        if let memberID = UserDataManager.shared.memberID {
+            self.memberID = memberID
+        }
+        
+        configureEventDate()
+        configureEventTimestamp()
+        // swiftlint:disable:next line_length
+        trackingProvider.trackEvent(cid: cid!, memberID: memberID, eventDate: eventDate!, eventTimestamp: eventTimestamp!, eventType: "click", eventValue: "product_image", splitTesting: "fresh") { result in
+            switch result {
+                case .success:
+                    print("Tracking event success.")
+                case .failure(let error):
+                    print("Tracking event error: \(error)")
+            }
+        }
+    }
 
     // MARK: - UITableViewDataSource
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -127,6 +178,7 @@ class ProductListViewController: STCompondViewController {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        postTrackingEventClick()
         tableView.deselectRow(at: indexPath, animated: true)
         guard let product = datas[indexPath.section][indexPath.row] as? Product else { return }
         showProductDetailViewController(product: product)
@@ -156,6 +208,7 @@ class ProductListViewController: STCompondViewController {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        postTrackingEventClick()
         collectionView.deselectItem(at: indexPath, animated: true)
         
         guard let product = datas[indexPath.section][indexPath.row] as? Product else { return }

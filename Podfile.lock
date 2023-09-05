@@ -12,6 +12,8 @@ PODS:
   - KeychainAccess (4.2.2)
   - Kingfisher (7.6.2)
   - MJRefresh (3.7.5)
+  - Shuffle-iOS (0.5.0)
+  - SPAlert (4.2.0)
   - SwiftLint (0.52.2)
 
 DEPENDENCIES:
@@ -21,6 +23,8 @@ DEPENDENCIES:
   - KeychainAccess
   - Kingfisher (~> 7.6.0)
   - MJRefresh
+  - Shuffle-iOS
+  - SPAlert
   - SwiftLint
 
 SPEC REPOS:
@@ -33,6 +37,8 @@ SPEC REPOS:
     - KeychainAccess
     - Kingfisher
     - MJRefresh
+    - Shuffle-iOS
+    - SPAlert
     - SwiftLint
 
 EXTERNAL SOURCES:
@@ -54,8 +60,10 @@ SPEC CHECKSUMS:
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   Kingfisher: 6c5449c6450c5239166510ba04afe374a98afc4f
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
+  Shuffle-iOS: ff33658fb1e5eebd6a4724c156473e63754be9cb
+  SPAlert: 735da1f16a887e294719217572ce1f936d8c8782
   SwiftLint: 1ac76dac888ca05cb0cf24d0c85887ec1209961d
 
-PODFILE CHECKSUM: 976305e42e4d1d7c46d2474e9480ac8d3aea95ff
+PODFILE CHECKSUM: cca17eb1d8c3c351f76279ed408f0e7426bf3bc2
 
 COCOAPODS: 1.12.1
