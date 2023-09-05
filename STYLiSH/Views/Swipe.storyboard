@@ -97,6 +97,10 @@
                             <constraint firstItem="dlu-du-YDu" firstAttribute="bottom" secondItem="28E-Mp-B7w" secondAttribute="bottom" constant="170" id="xFE-Oy-2tU"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="styleImageView" destination="28E-Mp-B7w" id="BCR-Es-I6X"/>
+                        <outlet property="styleLabel" destination="UAD-Ie-h6t" id="Xdc-88-r58"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HT1-yl-yN7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

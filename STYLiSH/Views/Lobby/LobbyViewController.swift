@@ -50,7 +50,7 @@ class LobbyViewController: STBaseViewController {
     // MARK: - Action
     
     private func postTrackingEventView() {
-        print("進入hots")
+        print("進入hots, style \(UserDataManager.shared.style)")
         if let cid = UserDataManager.shared.cid {
             self.cid = cid
         } else {
