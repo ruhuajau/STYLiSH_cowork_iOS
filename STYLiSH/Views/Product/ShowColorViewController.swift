@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ShowColorViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var showColorView: UIView!
@@ -35,6 +36,8 @@ class ShowColorViewController: UIViewController, UICollectionViewDataSource, UIC
             sizeCollectionView.reloadData()
         }
     }
+    var colorRecommendName: String?
+    
     var availableSizes: [String] = []
     var sizes: [String] = []
     var selectedIndexPath: IndexPath? = nil
@@ -101,6 +104,13 @@ class ShowColorViewController: UIViewController, UICollectionViewDataSource, UIC
                 if variant.colorCode == colorRecommend && variant.stock > 0 {
                     availableSizes.append(variant.size)
                 }
+                
+                if let color = product.colors.first(where: { $0.code == colorRecommend }) {
+                    self.colorRecommendName = color.name
+                } else {
+                    colorRecommendName = nil
+                }
+
             }
         
         print("Stock for \(colorRecommend): \(stockForSelectedColor)")
@@ -230,6 +240,26 @@ class ShowColorViewController: UIViewController, UICollectionViewDataSource, UIC
             }
         }
         return true
+    }
+    
+    
+    @IBAction func addToCartButtonTapped(_ sender: Any) {
+        
+        let colorSaved = Color(name: colorRecommendName!, code: colorRecommend!)
+        
+        StorageManager.shared.saveOrder(
+            color: colorSaved, size: size!, amount: quantity!, product: product!,
+            completion: { result in
+                switch result {
+                case .success:
+                    LKProgressHUD.showSuccess()
+                    print("success")
+                case .failure:
+                    LKProgressHUD.showFailure(text: "儲存失敗！")
+                }
+            }
+        )
+
     }
     
 }
