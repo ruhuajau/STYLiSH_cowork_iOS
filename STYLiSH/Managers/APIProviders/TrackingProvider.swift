@@ -17,6 +17,7 @@ class TrackingProvider {
         eventTimestamp: Int,
         eventType: String,
         eventValue: String,
+        splitTesting: String,
         completion: @escaping (Result<Void>) -> Void
     ) {
         let request = STTrackingRequest.trackEvent(
@@ -25,7 +26,8 @@ class TrackingProvider {
             eventDate: eventDate,
             eventTimestamp: eventTimestamp,
             eventType: eventType,
-            eventValue: eventValue
+            eventValue: eventValue,
+            splitTesting: splitTesting
         )
         
         HTTPClient.shared.request(request) { result in

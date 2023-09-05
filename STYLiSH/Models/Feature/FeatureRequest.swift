@@ -17,11 +17,18 @@ enum STFeatureRequest: STRequest {
         hairColor: String,
         skinColor: String
     )
+    
+    case productTinder
 
     var headers: [String: String] {
-        return [
-            STHTTPHeaderField.contentType.rawValue: STHTTPHeaderValue.json.rawValue
-        ]
+        switch self {
+            case .colorPicker:
+                return [
+                    STHTTPHeaderField.contentType.rawValue: STHTTPHeaderValue.json.rawValue
+                ]
+            case .productTinder:
+                return [:]
+        }
     }
 
     var body: Data? {
@@ -37,14 +44,26 @@ enum STFeatureRequest: STRequest {
                 "skin": skinColor
             ]
             return try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
+            case .productTinder:
+                return nil
         }
     }
 
     var method: String {
-        return STHTTPMethod.POST.rawValue
+        switch self {
+            case .colorPicker:
+                return STHTTPMethod.POST.rawValue
+            case .productTinder:
+                return STHTTPMethod.GET.rawValue
+        }
     }
 
     var endPoint: String {
-        return "/feature/color_picker"
+        switch self {
+            case .colorPicker:
+                return "/feature/color_picker"
+            case .productTinder:
+                return "/product_tinder"
+        }
     }
 }

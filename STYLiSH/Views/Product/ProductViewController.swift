@@ -10,6 +10,16 @@ import UIKit
 
 class ProductViewController: UIViewController {
 
+    private let trackingProvider = TrackingProvider()
+    
+    private var cid: String?
+    
+    private var memberID: String?
+    
+    private var eventDate: String?
+    
+    private var eventTimestamp: Int?
+    
     private enum LayoutType {
         case list
         case grid
@@ -62,8 +72,113 @@ class ProductViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = nil
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        postTrackingEventWomen()
+        print("進女裝")
+    }
 
     // MARK: - Action
+    private func postTrackingEventWomen() {
+        if let cid = UserDataManager.shared.cid {
+            self.cid = cid
+        } else {
+            let newUUID = UUID()
+            let cidString = newUUID.uuidString
+            UserDataManager.shared.cid = cidString
+            self.cid = cidString
+        }
+        
+        if let memberID = UserDataManager.shared.memberID {
+            self.memberID = memberID
+        }
+        
+        configureEventDate()
+        configureEventTimestamp()
+        
+        // swiftlint:disable:next line_length
+        trackingProvider.trackEvent(cid: cid!, memberID: memberID, eventDate: eventDate!, eventTimestamp: eventTimestamp!, eventType: "view", eventValue: "product_category_women", splitTesting: "fresh") { result in
+            switch result {
+                case .success:
+                    print("cid: \(self.cid), memberID: \(self.memberID), eventDate: \(self.eventDate), eventTimestamp: \(self.eventTimestamp)")
+                    print("Tracking event success.")
+                case .failure(let error):
+                    print("Tracking event error: \(error)")
+            }
+        }
+    }
+    
+    func configureEventDate() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let currentDate = Date()
+        let formattedDate = dateFormatter.string(from: currentDate)
+        eventDate = formattedDate
+    }
+    
+    func configureEventTimestamp() {
+        let currentTimestamp = Int(Date().timeIntervalSince1970)
+        eventTimestamp = currentTimestamp
+    }
+    
+    func postTrackingEventMen() {
+        if let cid = UserDataManager.shared.cid {
+            self.cid = cid
+        } else {
+            let newUUID = UUID()
+            let cidString = newUUID.uuidString
+            UserDataManager.shared.cid = cidString
+            self.cid = cidString
+        }
+        
+        if let memberID = UserDataManager.shared.memberID {
+            self.memberID = memberID
+        }
+        
+        configureEventDate()
+        configureEventTimestamp()
+        
+        // swiftlint:disable:next line_length
+        trackingProvider.trackEvent(cid: cid!, memberID: memberID, eventDate: eventDate!, eventTimestamp: eventTimestamp!, eventType: "view", eventValue: "product_category_men", splitTesting: "fresh") { result in
+            switch result {
+                case .success:
+                    print("cid: \(self.cid), memberID: \(self.memberID), eventDate: \(self.eventDate), eventTimestamp: \(self.eventTimestamp)")
+                    print("Tracking event success.")
+                case .failure(let error):
+                    print("Tracking event error: \(error)")
+            }
+        }
+    }
+    
+    func postTrackingEventAccessories() {
+        if let cid = UserDataManager.shared.cid {
+            self.cid = cid
+        } else {
+            let newUUID = UUID()
+            let cidString = newUUID.uuidString
+            UserDataManager.shared.cid = cidString
+            self.cid = cidString
+        }
+        
+        if let memberID = UserDataManager.shared.memberID {
+            self.memberID = memberID
+        }
+        
+        configureEventDate()
+        configureEventTimestamp()
+        
+        // swiftlint:disable:next line_length
+        trackingProvider.trackEvent(cid: cid!, memberID: memberID, eventDate: eventDate!, eventTimestamp: eventTimestamp!, eventType: "view", eventValue: "product_category_accessories", splitTesting: "fresh") { result in
+            switch result {
+                case .success:
+                    print("cid: \(self.cid), memberID: \(self.memberID), eventDate: \(self.eventDate), eventTimestamp: \(self.eventTimestamp)")
+                    print("Tracking event success.")
+                case .failure(let error):
+                    print("Tracking event error: \(error)")
+            }
+        }
+    }
+    
     @IBAction func onChangeProducts(_ sender: UIButton) {
         for btn in productBtns {
             btn.isSelected = false
@@ -73,6 +188,17 @@ class ProductViewController: UIViewController {
         
         guard let type = ProductType(rawValue: sender.tag) else { return }
         updateContainer(type: type)
+        
+        if sender.tag == 0 {
+            postTrackingEventWomen()
+            print("進女裝")
+        } else if sender.tag == 1 {
+            postTrackingEventMen()
+            print("進男裝")
+        } else {
+            postTrackingEventAccessories()
+            print("進配件")
+        }
     }
 
     @IBAction func onChangeLayoutType(_ sender: UIBarButtonItem) {

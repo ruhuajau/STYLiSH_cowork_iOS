@@ -140,6 +140,7 @@
 		DB907F692AA2DBEC00A6CD1B /* TinderCardFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB907F652AA2DBEC00A6CD1B /* TinderCardFooterView.swift */; };
 		DB907F6A2AA2DBEC00A6CD1B /* TinderCardOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB907F662AA2DBEC00A6CD1B /* TinderCardOverlay.swift */; };
 		DBD2B11D2AA33F8B0066FBA6 /* SwipeResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD2B11C2AA33F8B0066FBA6 /* SwipeResultViewController.swift */; };
+		DBFA257E2AA5BD0C004240BA /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFA257D2AA5BD0C004240BA /* UserDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -289,6 +290,7 @@
 		DB907F652AA2DBEC00A6CD1B /* TinderCardFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinderCardFooterView.swift; sourceTree = "<group>"; };
 		DB907F662AA2DBEC00A6CD1B /* TinderCardOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinderCardOverlay.swift; sourceTree = "<group>"; };
 		DBD2B11C2AA33F8B0066FBA6 /* SwipeResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeResultViewController.swift; sourceTree = "<group>"; };
+		DBFA257D2AA5BD0C004240BA /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		E921004E251C9FC3CBC174F5 /* Pods-STYLiSH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STYLiSH.release.xcconfig"; path = "Target Support Files/Pods-STYLiSH/Pods-STYLiSH.release.xcconfig"; sourceTree = "<group>"; };
 		F551E8F447D7C8DC42B53B98 /* Pods-STYLiSH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STYLiSH.debug.xcconfig"; path = "Target Support Files/Pods-STYLiSH/Pods-STYLiSH.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -729,6 +731,7 @@
 				3CE7A51422305E5A009FF003 /* KeyChainManager.swift */,
 				3CEBE076222F718D0064EF82 /* StorageManager.swift */,
 				3C9C0D542215443900595689 /* ProfileManager.swift */,
+				DBFA257D2AA5BD0C004240BA /* UserDataManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -975,6 +978,7 @@
 				3CE7A519223064C7009FF003 /* UserObject.swift in Sources */,
 				3CB801272229AFF10029A552 /* UICollectionView+Extension.swift in Sources */,
 				3C8F191B22E5BA9F00EECE90 /* LobbyView.swift in Sources */,
+				DBFA257E2AA5BD0C004240BA /* UserDataManager.swift in Sources */,
 				3C6FABF522FD39EB00226316 /* STOrderProductCellViewModel.swift in Sources */,
 				DB907F682AA2DBEC00A6CD1B /* TinderCardModel.swift in Sources */,
 				3CED4C0C22141E9700121D4B /* MarketProvider.swift in Sources */,

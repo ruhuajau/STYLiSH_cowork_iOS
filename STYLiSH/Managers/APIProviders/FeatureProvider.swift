@@ -53,4 +53,31 @@ class FeatureProvider {
             }
         }
     }
+    
+    func getProductTinder(completion: @escaping (Result<TinderObject>) -> Void) {
+            let request = STFeatureRequest.productTinder
+
+            HTTPClient.shared.request(request) { result in
+                switch result {
+                case .success(let data):
+                    do {
+                        let tinderObject = try self.decoder.decode(
+                            TinderObject.self,
+                            from: data
+                        )
+                        DispatchQueue.main.async {
+                            completion(Result.success(tinderObject))
+                        }
+                    } catch {
+                        DispatchQueue.main.async {
+                            completion(Result.failure(STHTTPClientError.decodeDataFail))
+                        }
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        completion(Result.failure(error))
+                    }
+                }
+            }
+        }
 }
