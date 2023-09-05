@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SPAlert
 
 class ShowColorViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -259,6 +259,10 @@ class ShowColorViewController: UIViewController, UICollectionViewDataSource, UIC
                 }
             }
         )
+        
+        let alertView = SPAlertView(title: "加入購物車", preset: .done)
+        alertView.duration = 0.5
+        alertView.present()
 
     }
     
