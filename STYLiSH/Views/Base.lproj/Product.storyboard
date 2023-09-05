@@ -719,7 +719,6 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wAK-5m-arp">
                                 <rect key="frame" x="35" y="45" width="115" height="115"/>
-                                <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="115" id="NHO-a8-J1c"/>
                                     <constraint firstAttribute="height" constant="115" id="VPa-u4-BOM"/>
@@ -842,6 +841,7 @@
                         <outlet property="plusButton" destination="VhC-XX-liN" id="A7R-dW-T8O"/>
                         <outlet property="showColorView" destination="wAK-5m-arp" id="PXq-CC-Y9z"/>
                         <outlet property="sizeCollectionView" destination="FPz-s9-HRq" id="ILu-X2-GGd"/>
+                        <outlet property="stockLabel" destination="8p6-bR-bhx" id="KOm-2A-5Cg"/>
                         <outlet property="textField" destination="l8A-hm-RJC" id="kXh-tR-pqc"/>
                     </connections>
                 </viewController>
@@ -870,9 +870,6 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

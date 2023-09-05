@@ -192,11 +192,20 @@ class ColorPickerViewController: UIViewController, UITableViewDelegate, UITableV
             switch result {
             case .success(let colorRecommendation):
                 // Handle the successful result
+                self.updateContainerView(with: colorRecommendation)
                 print("Recommended color: \(colorRecommendation)")
             case .failure(let error):
                 // Handle the error
                 print("Error: \(error.localizedDescription)")
             }
+        }
+
+    }
+    
+    private func updateContainerView(with color: String) {
+        if let showColorVC = self.containerVC {
+            showColorVC.showColorView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+            showColorVC.colorRecommend = color
         }
 
     }

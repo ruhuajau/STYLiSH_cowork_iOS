@@ -22,7 +22,20 @@ class ShowColorViewController: UIViewController {
     
     @IBOutlet weak var addCartButton: UIButton!
     
-    var product: Product?
+    @IBOutlet weak var stockLabel: UILabel!
+    
+    var product: Product?{
+        didSet {
+            self.sizes = product!.sizes
+        }
+    }
+    var colorRecommend: String? {
+        didSet {
+            updateStockForSelectedColor()
+        }
+    }
+    var availableSizes: [String] = []
+    var sizes: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +49,28 @@ class ShowColorViewController: UIViewController {
         minusButton.layer.borderWidth = 1.0
         minusButton.layer.borderColor = UIColor.gray.cgColor
         
+        showColorView.layer.borderWidth = 1.0
+        showColorView.layer.borderColor = UIColor.black.cgColor
+        
         print("product data: \(product)")
     }
     
+    private func updateStockForSelectedColor() {
+            guard let product = product, let colorRecommend = colorRecommend else {
+                return
+            }
+
+            // Iterate through the variants to calculate the stock for the selected color
+            var stockForSelectedColor = 0
+            for variant in product.variants {
+                if variant.colorCode == colorRecommend && variant.stock > 0 {
+                    availableSizes.append(variant.size)
+                }
+            }
+        
+        print("Stock for \(colorRecommend): \(stockForSelectedColor)")
+        stockLabel.text = "庫存：\(stockForSelectedColor)"
+        }
+    
 }
+    
