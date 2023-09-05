@@ -9,37 +9,43 @@
 import UIKit
 
 class STTabBarViewController: UITabBarController {
-
+    
     private let tabs: [Tab] = [.lobby, .product, .trolley, .profile]
     
     private var trolleyTabBarItem: UITabBarItem?
     
     private var orderObserver: NSKeyValueObservation?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         viewControllers = tabs.map { $0.makeViewController() }
-
+        
         trolleyTabBarItem = viewControllers?[2].tabBarItem
         trolleyTabBarItem?.badgeColor = .brown
         
         orderObserver = StorageManager.shared.observe(
             \StorageManager.orders,
-            options: .new,
-            changeHandler: { [weak self] _, change in
-                guard let newValue = change.newValue else { return }
-                if newValue.count > 0 {
-                    self?.trolleyTabBarItem?.badgeValue = String(newValue.count)
-                } else {
-                    self?.trolleyTabBarItem?.badgeValue = nil
-                }
-            }
+             options: .new,
+             changeHandler: { [weak self] _, change in
+                 guard let newValue = change.newValue else { return }
+                 if newValue.count > 0 {
+                     self?.trolleyTabBarItem?.badgeValue = String(newValue.count)
+                 } else {
+                     self?.trolleyTabBarItem?.badgeValue = nil
+                 }
+             }
         )
         
         StorageManager.shared.fetchOrders()
         
         delegate = self
+        
+        // Set the accessibilityIdentifier for the "Product" tab
+        if let productTabIndex = tabs.firstIndex(where: { $0 == .product }) {
+            viewControllers?[productTabIndex].tabBarItem.accessibilityIdentifier = "ProductTab"
+            viewControllers?[productTabIndex].tabBarItem.accessibilityLabel = "ProductTab"
+        }
     }
 }
 
@@ -50,14 +56,14 @@ extension STTabBarViewController {
         case product
         case profile
         case trolley
-
+        
         func makeViewController() -> UIViewController {
             let controller: UIViewController
             switch self {
-            case .lobby: controller = UIStoryboard.lobby.instantiateInitialViewController()!
-            case .product: controller = UIStoryboard.product.instantiateInitialViewController()!
-            case .profile: controller = UIStoryboard.profile.instantiateInitialViewController()!
-            case .trolley: controller = UIStoryboard.trolley.instantiateInitialViewController()!
+                case .lobby: controller = UIStoryboard.lobby.instantiateInitialViewController()!
+                case .product: controller = UIStoryboard.product.instantiateInitialViewController()!
+                case .profile: controller = UIStoryboard.profile.instantiateInitialViewController()!
+                case .trolley: controller = UIStoryboard.trolley.instantiateInitialViewController()!
             }
             controller.tabBarItem = makeTabBarItem()
             controller.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
@@ -70,27 +76,27 @@ extension STTabBarViewController {
         
         private var image: UIImage? {
             switch self {
-            case .lobby:
-                return .asset(.Icons_36px_Home_Normal)
-            case .product:
-                return .asset(.Icons_36px_Catalog_Normal)
-            case .trolley:
-                return .asset(.Icons_36px_Cart_Normal)
-            case .profile:
-                return .asset(.Icons_36px_Profile_Normal)
+                case .lobby:
+                    return .asset(.Icons_36px_Home_Normal)
+                case .product:
+                    return .asset(.Icons_36px_Catalog_Normal)
+                case .trolley:
+                    return .asset(.Icons_36px_Cart_Normal)
+                case .profile:
+                    return .asset(.Icons_36px_Profile_Normal)
             }
         }
         
         private var selectedImage: UIImage? {
             switch self {
-            case .lobby:
-                return .asset(.Icons_36px_Home_Selected)
-            case .product:
-                return .asset(.Icons_36px_Catalog_Selected)
-            case .trolley:
-                return .asset(.Icons_36px_Cart_Selected)
-            case .profile:
-                return .asset(.Icons_36px_Profile_Selected)
+                case .lobby:
+                    return .asset(.Icons_36px_Home_Selected)
+                case .product:
+                    return .asset(.Icons_36px_Catalog_Selected)
+                case .trolley:
+                    return .asset(.Icons_36px_Cart_Selected)
+                case .profile:
+                    return .asset(.Icons_36px_Profile_Selected)
             }
         }
     }
@@ -98,7 +104,7 @@ extension STTabBarViewController {
 
 // MARK: - UITabBarControllerDelegate
 extension STTabBarViewController: UITabBarControllerDelegate {
-
+    
     func tabBarController(
         _ tabBarController: UITabBarController,
         shouldSelect viewController: UIViewController
