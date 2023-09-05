@@ -17,6 +17,8 @@ class ColorPickerViewController: UIViewController, UITableViewDelegate, UITableV
     var selectedHairColor: String?
     var selectedSkinColor: String?
     var product: Product?
+    
+    var containerVC: ShowColorViewController?
         
     @IBOutlet weak var colorPickerTableView: UITableView!
     
@@ -35,8 +37,16 @@ class ColorPickerViewController: UIViewController, UITableViewDelegate, UITableV
         showResultButton.alpha = 0.6
         
         showImage()
-        print("product information: \(product)")
+        //print("product information: \(product)")
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if let containerVC = segue.destination as? ShowColorViewController {
+                // Set the product property of the container view controller
+                containerVC.product = self.product
+                self.containerVC = containerVC
+            }
+        }
     
     func showImage() {
         if let imageURLString = product?.mainImage, let imageURL = URL(string: imageURLString) {
@@ -90,13 +100,13 @@ class ColorPickerViewController: UIViewController, UITableViewDelegate, UITableV
 
     func didSelectHairColor(_ colorCode: String) {
         self.selectedHairColor = colorCode
-        print("hair:\(colorCode)")
+        //print("hair:\(colorCode)")
         checkEnableShowResultButton()
     }
     
     func didSelectSkinColor(_ colorCode: String) {
         self.selectedSkinColor = colorCode
-        print("skin:\(colorCode)")
+        //print("skin:\(colorCode)")
         checkEnableShowResultButton()
     }
 
@@ -119,7 +129,8 @@ class ColorPickerViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func showResultButtonTapped(_ sender: Any) {
         containerVIew.isHidden = !containerVIew.isHidden
-        
+        showResultButton.isEnabled = false
+        showResultButton.alpha = 0.6
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
