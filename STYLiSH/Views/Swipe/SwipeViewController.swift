@@ -40,10 +40,10 @@ class SwipeViewController: UIViewController {
     }()
     
     private var cardModels: [TinderCardModel] = [
-        TinderCardModel(image: nil),
-        TinderCardModel(image: nil),
-        TinderCardModel(image: nil),
-        TinderCardModel(image: nil)
+        TinderCardModel(image: UIImage(named: "1")),
+        TinderCardModel(image: UIImage(named: "2")),
+        TinderCardModel(image: UIImage(named: "3")),
+        TinderCardModel(image: UIImage(named: "4"))
     ]
     
     private var styleACount: Int = 0
@@ -65,7 +65,7 @@ class SwipeViewController: UIViewController {
         configureBackgroundGradient()
         layoutModalView()
         
-        getProductTinder()
+//        getProductTinder()
     }
     
     private func configureNavigationBar() {
