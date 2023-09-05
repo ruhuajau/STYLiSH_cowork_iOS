@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ProductDetailViewController: STBaseViewController {
+
+class ProductDetailViewController: STBaseViewController, ColorPickerDelegate, UITableViewDelegate {
     
     private let trackingProvider = TrackingProvider()
     
@@ -20,6 +21,8 @@ class ProductDetailViewController: STBaseViewController {
     
     private var eventTimestamp: Int?
 
+
+    
     private struct Segue {
         static let picker = "SeguePicker"
     }
@@ -27,6 +30,7 @@ class ProductDetailViewController: STBaseViewController {
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.dataSource = self
+            tableView.delegate = self
         }
     }
 
@@ -229,7 +233,18 @@ class ProductDetailViewController: STBaseViewController {
             )
         }
     }
-
+    
+    func sendColorAnalysisButtonTapped() {
+        //print(self.product)
+        if let colorPickerViewController = storyboard?.instantiateViewController(withIdentifier: "\(ColorPickerViewController.self)") as? ColorPickerViewController {
+                colorPickerViewController.modalPresentationStyle = .fullScreen
+                colorPickerViewController.product = self.product
+                present(colorPickerViewController, animated: true)
+            }
+        }
+        
+    
+    
     func showProductPickerView() {
         postTrackingEventCart()
         
@@ -274,7 +289,13 @@ extension ProductDetailViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let product = product else { return UITableViewCell() }
-        return datas[indexPath.row].cellForIndexPath(indexPath, tableView: tableView, data: product)
+        let cell = datas[indexPath.row].cellForIndexPath(indexPath, tableView: tableView, data: product)
+
+            // Check if the cell is of type ProductDescriptionTableViewCell and set its delegate
+            if let descriptionCell = cell as? ProductDescriptionTableViewCell {
+                descriptionCell.delegate = self
+            }
+        return cell
     }
 }
 

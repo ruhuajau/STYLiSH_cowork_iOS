@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EE8C0252AA58691003B205C /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8C0242AA58691003B205C /* ColorPickerViewController.swift */; };
+		0EE8C0282AA5A99A003B205C /* ColorPickerTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8C0272AA5A99A003B205C /* ColorPickerTitleTableViewCell.swift */; };
+		0EE8C02A2AA5A9AB003B205C /* ColorPickerHairTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8C0292AA5A9AB003B205C /* ColorPickerHairTableViewCell.swift */; };
+		0EE8C02C2AA5A9B9003B205C /* ColorPickerSkinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8C02B2AA5A9B9003B205C /* ColorPickerSkinTableViewCell.swift */; };
+		0EE8C0332AA6AFBD003B205C /* ShowColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8C0322AA6AFBD003B205C /* ShowColorViewController.swift */; };
+		0EE8C0372AA6BD51003B205C /* ShowSizeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8C0362AA6BD51003B205C /* ShowSizeCollectionViewCell.swift */; };
 		30C2E5FF28B87D4700DD2939 /* TPDirect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30C2E5FE28B87D4700DD2939 /* TPDirect.framework */; };
 		3C09F5122211435B00C5B3E2 /* Lobby.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C09F5112211435B00C5B3E2 /* Lobby.storyboard */; };
 		3C09F51C22114A0100C5B3E2 /* STTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C09F51B22114A0100C5B3E2 /* STTabBarViewController.swift */; };
@@ -144,6 +150,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0EE8C0242AA58691003B205C /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		0EE8C0272AA5A99A003B205C /* ColorPickerTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerTitleTableViewCell.swift; sourceTree = "<group>"; };
+		0EE8C0292AA5A9AB003B205C /* ColorPickerHairTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerHairTableViewCell.swift; sourceTree = "<group>"; };
+		0EE8C02B2AA5A9B9003B205C /* ColorPickerSkinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerSkinTableViewCell.swift; sourceTree = "<group>"; };
+		0EE8C0322AA6AFBD003B205C /* ShowColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowColorViewController.swift; sourceTree = "<group>"; };
+		0EE8C0362AA6BD51003B205C /* ShowSizeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSizeCollectionViewCell.swift; sourceTree = "<group>"; };
 		30C2E5FE28B87D4700DD2939 /* TPDirect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TPDirect.framework; sourceTree = "<group>"; };
 		3C09F5112211435B00C5B3E2 /* Lobby.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Lobby.storyboard; sourceTree = "<group>"; };
 		3C09F51B22114A0100C5B3E2 /* STTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STTabBarViewController.swift; sourceTree = "<group>"; };
@@ -316,6 +328,24 @@
 				E921004E251C9FC3CBC174F5 /* Pods-STYLiSH.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		0EE8C0262AA5A96E003B205C /* ColorPickerTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0EE8C0272AA5A99A003B205C /* ColorPickerTitleTableViewCell.swift */,
+				0EE8C0292AA5A9AB003B205C /* ColorPickerHairTableViewCell.swift */,
+				0EE8C02B2AA5A9B9003B205C /* ColorPickerSkinTableViewCell.swift */,
+			);
+			path = ColorPickerTableViewCell;
+			sourceTree = "<group>";
+		};
+		0EE8C02D2AA5B68E003B205C /* ColorPickerCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0EE8C0362AA6BD51003B205C /* ShowSizeCollectionViewCell.swift */,
+			);
+			path = ColorPickerCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		3C09F51F22115A9F00C5B3E2 /* Extensions */ = {
@@ -518,6 +548,10 @@
 				3C41B8462216667000112F94 /* ProductViewController.swift */,
 				3C33863E221BB2B800ED97E4 /* ProductListViewController.swift */,
 				3CCB3BC3222AA8FD00976A1C /* ProductDetailViewController.swift */,
+				0EE8C0242AA58691003B205C /* ColorPickerViewController.swift */,
+				0EE8C0322AA6AFBD003B205C /* ShowColorViewController.swift */,
+				0EE8C0262AA5A96E003B205C /* ColorPickerTableViewCell */,
+				0EE8C02D2AA5B68E003B205C /* ColorPickerCollectionViewCell */,
 				3C347949222E82F500969C30 /* AmountSelectionCell */,
 				3CDC5A68222D85B50071D0D1 /* SizeSelectionCell */,
 				3CDC5A64222D85080071D0D1 /* ColorSelectionCell */,
@@ -975,12 +1009,17 @@
 				DB907F692AA2DBEC00A6CD1B /* TinderCardFooterView.swift in Sources */,
 				3CE7A507223042CE009FF003 /* STBaseTextField.swift in Sources */,
 				3CB80E78222FCCC20095F18C /* Bundle+Extension.swift in Sources */,
+				0EE8C0332AA6AFBD003B205C /* ShowColorViewController.swift in Sources */,
 				3CE7A519223064C7009FF003 /* UserObject.swift in Sources */,
 				3CB801272229AFF10029A552 /* UICollectionView+Extension.swift in Sources */,
 				3C8F191B22E5BA9F00EECE90 /* LobbyView.swift in Sources */,
 				DBFA257E2AA5BD0C004240BA /* UserDataManager.swift in Sources */,
 				3C6FABF522FD39EB00226316 /* STOrderProductCellViewModel.swift in Sources */,
+
 				DB907F682AA2DBEC00A6CD1B /* TinderCardModel.swift in Sources */,
+
+				0EE8C0372AA6BD51003B205C /* ShowSizeCollectionViewCell.swift in Sources */,
+
 				3CED4C0C22141E9700121D4B /* MarketProvider.swift in Sources */,
 				3C831C6022E9945500112298 /* STOrderProductCell.swift in Sources */,
 				DB907F672AA2DBEC00A6CD1B /* TinderCardContentView.swift in Sources */,
@@ -990,11 +1029,13 @@
 				3CD2911D221135E2008B8A2D /* AppDelegate.swift in Sources */,
 				DB907F6A2AA2DBEC00A6CD1B /* TinderCardOverlay.swift in Sources */,
 				3CEBE07A222F72600064EF82 /* STYLiSH.xcdatamodeld in Sources */,
+				0EE8C0282AA5A99A003B205C /* ColorPickerTitleTableViewCell.swift in Sources */,
 				3CDC5A66222D85990071D0D1 /* ColorSelectionCell.swift in Sources */,
 				3C6020D8222B883600312958 /* ProductDescriptionTableViewCell.swift in Sources */,
 				DB036E742AA478AE00906A82 /* FeatureRequest.swift in Sources */,
 				3C0DD876221348E900F5237E /* LobbyViewController.swift in Sources */,
 				3C33691F2227DC7B008A5A7A /* TrolleySelectionView.swift in Sources */,
+				0EE8C02A2AA5A9AB003B205C /* ColorPickerHairTableViewCell.swift in Sources */,
 				3C831C6422E9AF8F00112298 /* STOrderUserInputCell.swift in Sources */,
 				DB72933D2AA2D90200C591E3 /* SwipeViewController.swift in Sources */,
 				3C4B10E222292EBB009942B7 /* STTapPayViewController.swift in Sources */,
@@ -1004,6 +1045,7 @@
 				DB2208982AA4DFA000F0422A /* FeatureObject.swift in Sources */,
 				3C546BE722EAC79D0082C655 /* STOrderHeaderView.swift in Sources */,
 				3C5DD7CC2227EFFF0053B67A /* TrolleyViewController.swift in Sources */,
+				0EE8C02C2AA5A9B9003B205C /* ColorPickerSkinTableViewCell.swift in Sources */,
 				3C6020EA222BC00100312958 /* UILabel+Extension.swift in Sources */,
 				3CB80E76222FCBE60095F18C /* STConstant.swift in Sources */,
 				3C1ACFE422151F50005583E2 /* ProfileViewController.swift in Sources */,
@@ -1041,7 +1083,11 @@
 				3C09F51E22114E1900C5B3E2 /* UIStoryboard+Extension.swift in Sources */,
 				3C0DD87E2213533F00F5237E /* LobbyTableViewCell.swift in Sources */,
 				3C33690E2226F53E008A5A7A /* TrolleyTableViewCell.swift in Sources */,
+
 				DB907F5F2AA2DAB900A6CD1B /* ButtonStackView.swift in Sources */,
+
+				0EE8C0252AA58691003B205C /* ColorPickerViewController.swift in Sources */,
+
 				3CC706122216955900CAD850 /* STBaseNavigationController.swift in Sources */,
 				3C8F191922E5997B00EECE90 /* LobbyTableViewHeaderView.swift in Sources */,
 				DBD2B11D2AA33F8B0066FBA6 /* SwipeResultViewController.swift in Sources */,
