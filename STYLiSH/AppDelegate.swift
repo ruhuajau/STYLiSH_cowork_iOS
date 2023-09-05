@@ -22,6 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = SwipeViewController()
+        window?.makeKeyAndVisible()
+        
         TPDSetup.setWithAppId(
             Bundle.STValueForInt32(key: STConstant.tapPayAppID),
             withAppKey: Bundle.STValueForString(key: STConstant.tapPayAppKey),

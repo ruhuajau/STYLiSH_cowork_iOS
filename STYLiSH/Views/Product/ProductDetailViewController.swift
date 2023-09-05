@@ -8,8 +8,21 @@
 
 import UIKit
 
-class ProductDetailViewController: STBaseViewController {
 
+class ProductDetailViewController: STBaseViewController, ColorPickerDelegate, UITableViewDelegate {
+    
+    private let trackingProvider = TrackingProvider()
+    
+    private var cid: String?
+    
+    private var memberID: String?
+    
+    private var eventDate: String?
+    
+    private var eventTimestamp: Int?
+
+
+    
     private struct Segue {
         static let picker = "SeguePicker"
     }
@@ -17,6 +30,7 @@ class ProductDetailViewController: STBaseViewController {
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.dataSource = self
+            tableView.delegate = self
         }
     }
 
@@ -65,6 +79,11 @@ class ProductDetailViewController: STBaseViewController {
         guard let product = product else { return }
         galleryView.datas = product.images
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        postTrackingEventDetail()
+        print("進detail page")
+    }
 
     private func setupTableView() {
         tableView.lk_registerCellWithNib(
@@ -91,7 +110,104 @@ class ProductDetailViewController: STBaseViewController {
     }
 
     // MARK: - Action
+    private func postTrackingEventDetail() {
+        if let cid = UserDataManager.shared.cid {
+            self.cid = cid
+        } else {
+            let newUUID = UUID()
+            let cidString = newUUID.uuidString
+            UserDataManager.shared.cid = cidString
+            self.cid = cidString
+        }
+        
+        if let memberID = UserDataManager.shared.memberID {
+            self.memberID = memberID
+        }
+        
+        configureEventDate()
+        configureEventTimestamp()
+        // swiftlint:disable:next line_length
+        trackingProvider.trackEvent(cid: cid!, memberID: memberID, eventDate: eventDate!, eventTimestamp: eventTimestamp!, eventType: "view", eventValue: "product_detail", splitTesting: "fresh") { result in
+            switch result {
+                case .success:
+                    print("Tracking event success.")
+                case .failure(let error):
+                    print("Tracking event error: \(error)")
+            }
+        }
+    }
+    
+    func postTrackingEventCart() {
+        print("進入購物車")
+        if let cid = UserDataManager.shared.cid {
+            self.cid = cid
+        } else {
+            let newUUID = UUID()
+            let cidString = newUUID.uuidString
+            UserDataManager.shared.cid = cidString
+            self.cid = cidString
+        }
+        
+        if let memberID = UserDataManager.shared.memberID {
+            self.memberID = memberID
+        }
+        
+        configureEventDate()
+        configureEventTimestamp()
+        
+        trackingProvider.trackEvent(cid: cid!, memberID: memberID, eventDate: eventDate!, eventTimestamp: eventTimestamp!, eventType: "view", eventValue: "cart", splitTesting: "fresh") { result in
+            switch result {
+                case .success:
+                    print("Tracking event success.")
+                case .failure(let error):
+                    print("Tracking event error: \(error)")
+            }
+        }
+    }
+    
+    private func postTrackingEventClick() {
+        print("點擊加入購物車")
+        if let cid = UserDataManager.shared.cid {
+            self.cid = cid
+        } else {
+            let newUUID = UUID()
+            let cidString = newUUID.uuidString
+            UserDataManager.shared.cid = cidString
+            self.cid = cidString
+        }
+        
+        if let memberID = UserDataManager.shared.memberID {
+            self.memberID = memberID
+        }
+        
+        configureEventDate()
+        configureEventTimestamp()
+        // swiftlint:disable:next line_length
+        trackingProvider.trackEvent(cid: cid!, memberID: memberID, eventDate: eventDate!, eventTimestamp: eventTimestamp!, eventType: "click", eventValue: "cart_adding", splitTesting: "fresh") { result in
+            switch result {
+                case .success:
+                    print("Tracking event success.")
+                case .failure(let error):
+                    print("Tracking event error: \(error)")
+            }
+        }
+    }
+    
+    func configureEventDate() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let currentDate = Date()
+        let formattedDate = dateFormatter.string(from: currentDate)
+        eventDate = formattedDate
+    }
+    
+    func configureEventTimestamp() {
+        let currentTimestamp = Int(Date().timeIntervalSince1970)
+        eventTimestamp = currentTimestamp
+    }
+    
     @IBAction func didTouchAddToCarBtn(_ sender: UIButton) {
+        postTrackingEventClick()
         if productPickerView.superview == nil {
             showProductPickerView()
         } else {
@@ -117,8 +233,21 @@ class ProductDetailViewController: STBaseViewController {
             )
         }
     }
-
+    
+    func sendColorAnalysisButtonTapped() {
+        //print(self.product)
+        if let colorPickerViewController = storyboard?.instantiateViewController(withIdentifier: "\(ColorPickerViewController.self)") as? ColorPickerViewController {
+                colorPickerViewController.modalPresentationStyle = .fullScreen
+                colorPickerViewController.product = self.product
+                present(colorPickerViewController, animated: true)
+            }
+        }
+        
+    
+    
     func showProductPickerView() {
+        postTrackingEventCart()
+        
         let maxY = tableView.frame.maxY
         productPickerView.frame = CGRect(
             x: 0, y: maxY, width: UIScreen.width, height: 0.0
@@ -160,7 +289,13 @@ extension ProductDetailViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let product = product else { return UITableViewCell() }
-        return datas[indexPath.row].cellForIndexPath(indexPath, tableView: tableView, data: product)
+        let cell = datas[indexPath.row].cellForIndexPath(indexPath, tableView: tableView, data: product)
+
+            // Check if the cell is of type ProductDescriptionTableViewCell and set its delegate
+            if let descriptionCell = cell as? ProductDescriptionTableViewCell {
+                descriptionCell.delegate = self
+            }
+        return cell
     }
 }
 

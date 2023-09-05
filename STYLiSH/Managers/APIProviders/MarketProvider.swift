@@ -69,6 +69,7 @@ class MarketProvider {
                     }
                 } catch {
                     completion(Result.failure(error))
+                    print(error.localizedDescription)
                 }
             case .failure(let error):
                 completion(Result.failure(error))
