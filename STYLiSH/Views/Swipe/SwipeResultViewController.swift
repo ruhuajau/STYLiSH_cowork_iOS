@@ -11,6 +11,12 @@ import Foundation
 
 class SwipeResultViewController: UIViewController {
     
+    @IBOutlet weak var styleLabel: UILabel!
+    
+    @IBOutlet weak var styleImageView: UIImageView!
+    
+    //TODO: 更新Label和Image
+    
     private let trackingProvider = TrackingProvider()
     
     private var cid: String?
@@ -129,7 +135,7 @@ class SwipeResultViewController: UIViewController {
         guard let authVC = UIStoryboard.auth.instantiateInitialViewController() else { return }
         authVC.modalPresentationStyle = .overCurrentContext
         present(authVC, animated: false, completion: nil)
-    
+        print("UserData style: \(UserDataManager.shared.style)")
     }
     
     @IBAction func backToHomePageButtonTapped(_ sender: Any) {
@@ -137,6 +143,7 @@ class SwipeResultViewController: UIViewController {
         guard let mainVC = UIStoryboard.main.instantiateInitialViewController() else { return }
         mainVC.modalPresentationStyle = .overCurrentContext
         present(mainVC, animated: false, completion: nil)
+        print("UserData style: \(UserDataManager.shared.style)")
     }
     
 }

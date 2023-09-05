@@ -127,7 +127,6 @@ class CheckoutViewController: STBaseViewController {
         eventTimestamp = currentTimestamp
     }
     
-    
     func checkout(_ cell: STPaymentInfoTableViewCell) {
         guard canCheckout() else { return }
         
@@ -148,6 +147,9 @@ class CheckoutViewController: STBaseViewController {
     }
     
     private func checkoutWithCash() {
+        //TODO: 打checkout API
+        LKProgressHUD.show()
+        
         StorageManager.shared.deleteAllProduct(completion: { _ in })
         performSegue(withIdentifier: Segue.success, sender: nil)
     }
@@ -182,10 +184,11 @@ class CheckoutViewController: STBaseViewController {
     }
     
     func canCheckout() -> Bool {
-        switch orderProvider.order.payment {
-        case .cash: return orderProvider.order.isReady()
-        case .credit: return orderProvider.order.isReady() && isCanGetPrime
-        }
+//        switch orderProvider.order.payment {
+//        case .cash: return orderProvider.order.isReady()
+//        case .credit: return orderProvider.order.isReady() && isCanGetPrime
+        true
+//        }
     }
 }
 

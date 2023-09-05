@@ -18,6 +18,8 @@ class ButtonStackView: UIStackView {
     private let passButton: TinderButton = {
         let button = TinderButton(borderColor: UIColor.hexStringToUIColor(hex: "FF5E51").cgColor)
         button.setImage(UIImage(named: "pass"), for: .normal)
+        button.accessibilityIdentifier = "tinderPass"
+        button.accessibilityLabel = "tinderPass"
         button.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
         button.tag = 2
         return button
@@ -34,6 +36,8 @@ class ButtonStackView: UIStackView {
     private let likeButton: TinderButton = {
         let button = TinderButton(borderColor: UIColor.hexStringToUIColor(hex: "00D387").cgColor)
         button.setImage(UIImage(named: "heart"), for: .normal)
+        button.accessibilityIdentifier = "tinderLike"
+        button.accessibilityLabel = "tinderLike"
         button.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
         button.tag = 4
         return button

@@ -43,11 +43,14 @@ class SwipeViewController: UIViewController {
         TinderCardModel(image: nil),
         TinderCardModel(image: nil),
         TinderCardModel(image: nil),
-        TinderCardModel(image: nil),
-        TinderCardModel(image: nil),
-        TinderCardModel(image: nil),
         TinderCardModel(image: nil)
     ]
+    
+    private var styleACount: Int = 0
+    
+    private var styleBCount: Int = 0
+    
+    private var styleCCount: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -178,17 +181,32 @@ class SwipeViewController: UIViewController {
                     
                     guard let imageURLs = imageURLs else { return }
                     
-//                    for (index, imageURL) in imageURLs.enumerated() {
-//                        KingfisherManager.shared.retrieveImage(with: ImageResource(downloadURL: URL(string: imageURL)!), completionHandler: { result in
-//                            switch result {
-//                            case .success(let image):
-//                                self.cardModels[index].image = image
-//                            case .failure(let error):
-//                                print("Error: \(error)")
-//                            }
-//                        })
-//                    }
+                    let dispatchGroup = DispatchGroup()
                     
+                    for (index, urlStr) in imageURLs.enumerated() {
+                        if let url = URL(string: urlStr) {
+                            dispatchGroup.enter()
+                            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+                                
+                                defer {
+                                    dispatchGroup.leave()
+                                }
+                                if let error = error {
+                                    print("Error downloading image: \(error)")
+                                } else if let data = data, let image = UIImage(data: data) {
+                                    // Update the card model with the downloaded image
+                                    self.cardModels[index].image = image
+                                    print(data)
+                                }
+                            }
+                            task.resume()
+                        }
+                    }
+                    dispatchGroup.notify(queue: DispatchQueue.main) {
+                        // This block will be called when all download tasks are completed.
+                        // You can update your UI here once all images have been downloaded.
+                        self.cardStack.reloadData()
+                    }
                     
                     // Print or use the retrieved data as needed
                     print("Images: \(imageURLs)")
@@ -240,6 +258,17 @@ extension SwipeViewController: ButtonStackViewDelegate, SwipeCardStackDataSource
         let storyboard = UIStoryboard.swipe
         guard let swipeResultVC = storyboard.instantiateViewController(withIdentifier: "SwipeResult") as? SwipeResultViewController else { return }
         swipeResultVC.modalPresentationStyle = .fullScreen
+        
+        if styleACount > styleBCount && styleACount > styleCCount {
+            UserDataManager.shared.style = "A"
+        } else if styleBCount > styleACount && styleBCount > styleCCount {
+            UserDataManager.shared.style = "B"
+        } else if styleCCount > styleACount && styleCCount > styleBCount {
+            UserDataManager.shared.style = "C"
+        } else {
+            UserDataManager.shared.style = "A"
+        }
+        
         present(swipeResultVC, animated: false)
         print("Swiped all cards!導覽至結果頁面")
     }
@@ -250,6 +279,22 @@ extension SwipeViewController: ButtonStackViewDelegate, SwipeCardStackDataSource
     
     func cardStack(_ cardStack: SwipeCardStack, didSwipeCardAt index: Int, with direction: SwipeDirection) {
         //        print("Swiped \(direction) on \(cardModels[index].name)")
+        if direction == .right {
+            switch index {
+                case 0:
+                    styleACount += 1
+                case 1:
+                    styleBCount += 1
+                case 2:
+                    styleCCount += 1
+                case 3:
+                    styleACount += 1
+                default:
+                    break
+            }
+        }
+       
+        print("A: \(styleACount), B: \(styleBCount), C: \(styleCCount)")
     }
     
     func cardStack(_ cardStack: SwipeCardStack, didSelectCardAt index: Int) {
