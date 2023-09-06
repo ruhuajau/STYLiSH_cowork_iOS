@@ -13,9 +13,11 @@ enum STFeatureRequest: STRequest {
         cid: String,
         memberID: String?,
         eventDate: String,
+        deviceOS: String,
         eventTimestamp: Int,
         hairColor: String,
-        skinColor: String
+        skinColor: String,
+        colors: [String]
     )
     
     case productTinder
@@ -33,7 +35,7 @@ enum STFeatureRequest: STRequest {
 
     var body: Data? {
         switch self {
-        case .colorPicker(let cid, let memberID, let eventDate, let eventTimestamp, let hairColor, let skinColor):
+        case .colorPicker(let cid, let memberID, let eventDate, let deviceOS, let eventTimestamp, let hairColor, let skinColor, let colors):
             let dict: [String: Any] = [
                 "cid": cid,
                 "member_id": memberID ?? "None",
@@ -41,7 +43,8 @@ enum STFeatureRequest: STRequest {
                 "event_date": eventDate,
                 "event_timestamp": eventTimestamp,
                 "hair": hairColor,
-                "skin": skinColor
+                "skin": skinColor,
+                "colors": colors
             ]
             return try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
             case .productTinder:
@@ -61,7 +64,7 @@ enum STFeatureRequest: STRequest {
     var endPoint: String {
         switch self {
             case .colorPicker:
-                return "/feature/color_picker"
+                return "/color_picker"
             case .productTinder:
                 return "/product_tinder"
         }

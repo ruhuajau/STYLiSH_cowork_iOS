@@ -12,7 +12,7 @@
 		0EE8C02A2AA5A9AB003B205C /* ColorPickerHairTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8C0292AA5A9AB003B205C /* ColorPickerHairTableViewCell.swift */; };
 		0EE8C02C2AA5A9B9003B205C /* ColorPickerSkinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8C02B2AA5A9B9003B205C /* ColorPickerSkinTableViewCell.swift */; };
 		0EE8C0332AA6AFBD003B205C /* ShowColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8C0322AA6AFBD003B205C /* ShowColorViewController.swift */; };
-		0EE8C0372AA6BD51003B205C /* ShowSizeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8C0362AA6BD51003B205C /* ShowSizeCollectionViewCell.swift */; };
+		0EE8C0372AA6BD51003B205C /* SizeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8C0362AA6BD51003B205C /* SizeCollectionViewCell.swift */; };
 		30C2E5FF28B87D4700DD2939 /* TPDirect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30C2E5FE28B87D4700DD2939 /* TPDirect.framework */; };
 		3C09F5122211435B00C5B3E2 /* Lobby.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C09F5112211435B00C5B3E2 /* Lobby.storyboard */; };
 		3C09F51C22114A0100C5B3E2 /* STTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C09F51B22114A0100C5B3E2 /* STTabBarViewController.swift */; };
@@ -155,7 +155,7 @@
 		0EE8C0292AA5A9AB003B205C /* ColorPickerHairTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerHairTableViewCell.swift; sourceTree = "<group>"; };
 		0EE8C02B2AA5A9B9003B205C /* ColorPickerSkinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerSkinTableViewCell.swift; sourceTree = "<group>"; };
 		0EE8C0322AA6AFBD003B205C /* ShowColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowColorViewController.swift; sourceTree = "<group>"; };
-		0EE8C0362AA6BD51003B205C /* ShowSizeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSizeCollectionViewCell.swift; sourceTree = "<group>"; };
+		0EE8C0362AA6BD51003B205C /* SizeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCollectionViewCell.swift; sourceTree = "<group>"; };
 		30C2E5FE28B87D4700DD2939 /* TPDirect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TPDirect.framework; sourceTree = "<group>"; };
 		3C09F5112211435B00C5B3E2 /* Lobby.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Lobby.storyboard; sourceTree = "<group>"; };
 		3C09F51B22114A0100C5B3E2 /* STTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STTabBarViewController.swift; sourceTree = "<group>"; };
@@ -343,7 +343,7 @@
 		0EE8C02D2AA5B68E003B205C /* ColorPickerCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				0EE8C0362AA6BD51003B205C /* ShowSizeCollectionViewCell.swift */,
+				0EE8C0362AA6BD51003B205C /* SizeCollectionViewCell.swift */,
 			);
 			path = ColorPickerCollectionViewCell;
 			sourceTree = "<group>";
@@ -1015,11 +1015,8 @@
 				3C8F191B22E5BA9F00EECE90 /* LobbyView.swift in Sources */,
 				DBFA257E2AA5BD0C004240BA /* UserDataManager.swift in Sources */,
 				3C6FABF522FD39EB00226316 /* STOrderProductCellViewModel.swift in Sources */,
-
 				DB907F682AA2DBEC00A6CD1B /* TinderCardModel.swift in Sources */,
-
-				0EE8C0372AA6BD51003B205C /* ShowSizeCollectionViewCell.swift in Sources */,
-
+				0EE8C0372AA6BD51003B205C /* SizeCollectionViewCell.swift in Sources */,
 				3CED4C0C22141E9700121D4B /* MarketProvider.swift in Sources */,
 				3C831C6022E9945500112298 /* STOrderProductCell.swift in Sources */,
 				DB907F672AA2DBEC00A6CD1B /* TinderCardContentView.swift in Sources */,
@@ -1083,11 +1080,8 @@
 				3C09F51E22114E1900C5B3E2 /* UIStoryboard+Extension.swift in Sources */,
 				3C0DD87E2213533F00F5237E /* LobbyTableViewCell.swift in Sources */,
 				3C33690E2226F53E008A5A7A /* TrolleyTableViewCell.swift in Sources */,
-
 				DB907F5F2AA2DAB900A6CD1B /* ButtonStackView.swift in Sources */,
-
 				0EE8C0252AA58691003B205C /* ColorPickerViewController.swift in Sources */,
-
 				3CC706122216955900CAD850 /* STBaseNavigationController.swift in Sources */,
 				3C8F191922E5997B00EECE90 /* LobbyTableViewHeaderView.swift in Sources */,
 				DBD2B11D2AA33F8B0066FBA6 /* SwipeResultViewController.swift in Sources */,

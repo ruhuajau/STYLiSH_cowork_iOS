@@ -12,6 +12,8 @@ class CheckoutViewController: STBaseViewController {
     
     private let trackingProvider = TrackingProvider()
     
+    private let userProvider = UserProvider()
+    
     private var cid: String?
     
     private var memberID: String?
@@ -19,6 +21,8 @@ class CheckoutViewController: STBaseViewController {
     private var eventDate: String?
     
     private var eventTimestamp: Int?
+    
+    private var postCheckOutData: NewOrderList?
     
     private struct Segue {
         static let success = "SegueSuccess"
@@ -60,10 +64,9 @@ class CheckoutViewController: STBaseViewController {
         }
     }
     
-    private let userProvider = UserProvider()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(StorageManager.shared.orders)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -127,7 +130,6 @@ class CheckoutViewController: STBaseViewController {
         eventTimestamp = currentTimestamp
     }
     
-    
     func checkout(_ cell: STPaymentInfoTableViewCell) {
         guard canCheckout() else { return }
         
@@ -136,8 +138,8 @@ class CheckoutViewController: STBaseViewController {
         }
         
         switch orderProvider.order.payment {
-        case .credit: checkoutWithTapPay()
-        case .cash: checkoutWithCash()
+            case .credit: checkoutWithTapPay()
+            case .cash: checkoutWithCash()
         }
     }
     
@@ -148,44 +150,111 @@ class CheckoutViewController: STBaseViewController {
     }
     
     private func checkoutWithCash() {
+        let orders = orderProvider.order.products
+        
+        var newListArray: [NewList] = []
+        
+        for order in orders {
+            if let product = order.product,
+               let productName = product.title,
+               let color = order.selectedColor?.name,
+               let colorCode = order.selectedColor?.code,
+               let productSize = order.seletedSize {
+                let newList = NewList(
+                    productID: Int(product.id),
+                    productName: productName,
+                    productPrice: Int(product.price),
+                    color: OrderColor(name: color, code: colorCode),
+                    productSize: productSize,
+                    productQty: Int(order.amount),
+                    orderDate: eventDate!,
+                    orderTimestamp: eventTimestamp!
+                )
+                newListArray.append(newList)
+            }
+        }
+        
+        postCheckOutData = NewOrderList(list: newListArray)
+        
+        guard let token = KeyChainManager.shared.token else {
+            fatalError("Cannot get token when checkout")
+        }
+        
+        if let url = URL(string: "http://3.113.149.66:8000/api/1.0/order/checkout") {
+            
+            configureEventDate()
+            configureEventTimestamp()
+            
+            var request = URLRequest(url: url)
+            
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue(token, forHTTPHeaderField: "Authorization")
+            request.httpMethod = "POST"
+            
+            if let postData = try? JSONEncoder().encode(postCheckOutData) {
+                if let jsonString = String(data: postData, encoding: .utf8) {
+                    print("Request JSON: \(jsonString)")
+                }
+                request.httpBody = postData
+            } else {
+                print("Failed to encode the JSON data")
+            }
+            
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                
+                if let data = data,
+                   let content = String(data: data, encoding: .utf8) {
+                    print("Checkout API:(content)")
+                }
+                if let httpResponse = response as? HTTPURLResponse {
+                    print("HTTP Status Code: \(httpResponse.statusCode)")
+                }
+                if let error = error {
+                    print("Error when post checkout API:\(error)")
+                    
+                }
+            }.resume()
+        }
+        
         StorageManager.shared.deleteAllProduct(completion: { _ in })
         performSegue(withIdentifier: Segue.success, sender: nil)
     }
     
     private func checkoutWithTapPay() {
-        LKProgressHUD.show()
-        tappayVC.getPrime(completion: { [weak self] result in
-            switch result {
-            case .success(let prime):
-                guard let self = self else { return }
-                self.userProvider.checkout(
-                    order: self.orderProvider.order,
-                    prime: prime,
-                    completion: { result in
-                        LKProgressHUD.dismiss()
-                        switch result {
-                        case .success(let reciept):
-                            print(reciept)
-                            self.performSegue(withIdentifier: Segue.success, sender: nil)
-                            StorageManager.shared.deleteAllProduct(completion: { _ in })
-                        case .failure(let error):
-                            // Error Handle
-                            print(error)
-                        }
-                })
-            case .failure(let error):
-                LKProgressHUD.dismiss()
-                // Error Handle
-                print(error)
-            }
-        })
+        //        LKProgressHUD.show()
+        //        tappayVC.getPrime(completion: { [weak self] result in
+        //            switch result {
+        //            case .success(let prime):
+        //                guard let self = self else { return }
+        //                self.userProvider.checkout(
+        //                    order: self.orderProvider.order,
+        //                    prime: prime,
+        //                    completion: { result in
+        //                        LKProgressHUD.dismiss()
+        //                        switch result {
+        //                        case .success(let reciept):
+        //                            print(reciept)
+        //                            self.performSegue(withIdentifier: Segue.success, sender: nil)
+        //                            StorageManager.shared.deleteAllProduct(completion: { _ in })
+        //                        case .failure(let error):
+        //                            // Error Handle
+        //                            print(error)
+        //                        }
+        //                })
+        //            case .failure(let error):
+        //                LKProgressHUD.dismiss()
+        //                // Error Handle
+        //                print(error)
+        //            }
+        //        })
     }
     
     func canCheckout() -> Bool {
-        switch orderProvider.order.payment {
-        case .cash: return orderProvider.order.isReady()
-        case .credit: return orderProvider.order.isReady() && isCanGetPrime
-        }
+        //        switch orderProvider.order.payment {
+        //        case .cash: return orderProvider.order.isReady()
+        //        case .credit: return orderProvider.order.isReady() && isCanGetPrime
+        true
+        //        }
     }
 }
 
@@ -221,23 +290,23 @@ extension CheckoutViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return .empty
     }
-
+    
     // MARK: - Section Row
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch orderProvider.orderCustructor[section] {
-        case .products: return orderProvider.order.products.count
-        default: return 1
+            case .products: return orderProvider.order.products.count
+            default: return 1
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch orderProvider.orderCustructor[indexPath.section] {
-        case .products:
-            return mappingCellWtih(order: orderProvider.order, at: indexPath)
-        case .paymentInfo:
-            return mappingCellWtih(payment: "", at: indexPath)
-        case .reciever:
-            return mappingCellWtih(reciever: orderProvider.order.reciever, at: indexPath)
+            case .products:
+                return mappingCellWtih(order: orderProvider.order, at: indexPath)
+            case .paymentInfo:
+                return mappingCellWtih(payment: "", at: indexPath)
+            case .reciever:
+                return mappingCellWtih(reciever: orderProvider.order.reciever, at: indexPath)
         }
     }
     
@@ -327,15 +396,15 @@ extension CheckoutViewController: STPaymentInfoTableViewCellDelegate {
     
     func isHidden(_ cell: STPaymentInfoTableViewCell, at index: Int) -> Bool {
         switch orderProvider.payments[index] {
-        case .cash: return true
-        case .credit: return false
+            case .cash: return true
+            case .credit: return false
         }
     }
     
     func heightForConstraint(_ cell: STPaymentInfoTableViewCell, at index: Int) -> CGFloat {
         switch orderProvider.payments[index] {
-        case .cash: return 44
-        case .credit: return 118
+            case .cash: return 44
+            case .credit: return 118
         }
     }
 }

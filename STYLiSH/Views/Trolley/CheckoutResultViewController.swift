@@ -30,11 +30,13 @@ class CheckoutResultViewController: STBaseViewController {
     
     override func backToRoot(_ sender: Any) {
         backToRoot(completion: {
-            //TODO: 更新
 //            let appdelegate = UIApplication.shared.delegate as? AppDelegate
 //            let root = appdelegate?.window?.rootViewController as? STTabBarViewController
 //            root?.selectedIndex = 0
             
+            guard let mainVC = UIStoryboard.main.instantiateInitialViewController() else { return }
+            mainVC.modalPresentationStyle = .overCurrentContext
+            self.present(mainVC, animated: false, completion: nil)
         })
     }
     

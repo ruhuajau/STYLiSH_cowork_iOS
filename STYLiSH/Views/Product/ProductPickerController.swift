@@ -53,6 +53,11 @@ class ProductPickerController: UIViewController {
             guard let index = datas.firstIndex(of: .size) else { return }
             let indexPath = IndexPath(row: index, section: 0)
             guard let cell = tableView.cellForRow(at: indexPath) else { return }
+            
+            cell.isAccessibilityElement = true
+            cell.accessibilityLabel = "selectColor"
+            cell.accessibilityIdentifier = "selectColor"
+
             manipulaterCell(cell, type: .size)
             selectedSize = nil
             delegate?.valueChange(self)
@@ -64,6 +69,11 @@ class ProductPickerController: UIViewController {
             guard let index = datas.firstIndex(of: .amount) else { return }
             let indexPath = IndexPath(row: index, section: 0)
             guard let cell = tableView.cellForRow(at: indexPath) else { return }
+            
+            cell.isAccessibilityElement = true
+            cell.accessibilityLabel = "selectSize"
+            cell.accessibilityIdentifier = "selectSize"
+            
             manipulaterCell(cell, type: .amount)
             delegate?.valueChange(self)
         }
@@ -183,6 +193,7 @@ extension ProductPickerController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: datas[indexPath.row].identifier, for: indexPath)
+                
         manipulaterCell(cell, type: datas[indexPath.row])
         return cell
     }

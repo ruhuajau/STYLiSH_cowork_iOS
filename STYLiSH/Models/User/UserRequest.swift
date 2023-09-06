@@ -12,21 +12,22 @@ enum STUserRequest: STRequest {
     case signin(email: String, password: String)
     case signup(email: String, password: String)
     case checkout(token: String, body: Data?)
+    case checkoutWithCash(token: String, list: [NewList])
     case profile(token: String)
     
     var headers: [String: String] {
         switch self {
             case .signin, .signup:
                 return [STHTTPHeaderField.contentType.rawValue: STHTTPHeaderValue.json.rawValue]
-            case .checkout(let token, _):
+            case .checkout(let token, _), .checkoutWithCash(let token, _):
                 return [
                     STHTTPHeaderField.auth.rawValue: "Bearer \(token)",
                     STHTTPHeaderField.contentType.rawValue: STHTTPHeaderValue.json.rawValue
                 ]
             case .profile(let token):
                 return [
-                    STHTTPHeaderField.auth.rawValue: "Bearer \(token)",
-                    STHTTPHeaderField.contentType.rawValue: STHTTPHeaderValue.json.rawValue
+                    STHTTPHeaderField.auth.rawValue: "Bearer \(token)"
+//                    STHTTPHeaderField.contentType.rawValue: STHTTPHeaderValue.json.rawValue
                 ]
         }
     }
@@ -48,13 +49,18 @@ enum STUserRequest: STRequest {
                 return try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
             case .checkout(_, let body):
                 return body
+            case .checkoutWithCash(_, let newList):
+                let dict = [
+                    "list": newList
+                ]
+                return try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
             case .profile: return nil
         }
     }
     
     var method: String {
         switch self {
-            case .signin, .signup, .checkout: return STHTTPMethod.POST.rawValue
+            case .signin, .signup, .checkout, .checkoutWithCash: return STHTTPMethod.POST.rawValue
             case .profile: return STHTTPMethod.GET.rawValue
         }
     }
@@ -63,7 +69,7 @@ enum STUserRequest: STRequest {
         switch self {
             case .signin: return "/signin"
             case .signup: return "/signup"
-            case .checkout: return "/order/checkout"
+            case .checkout, .checkoutWithCash: return "/order/checkout"
             case .profile: return "/profile"
         }
     }

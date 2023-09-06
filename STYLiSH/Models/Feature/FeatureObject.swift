@@ -9,18 +9,16 @@
 import Foundation
 
 struct ColorData: Codable {
-    let data: ColorResponse
+    let recommendColor: String
+    
+    enum CodingKeys: String, CodingKey {
+        case recommendColor = "recommend_color"
+    }
 }
 
 // MARK: - DataClass
 struct ColorResponse: Codable {
-    let cid, memberID, recommendColor: String
-
-    enum CodingKeys: String, CodingKey {
-        case cid
-        case memberID = "member_id"
-        case recommendColor = "recommend_color"
-    }
+    let data: ColorData
 }
 
 struct TinderObject: Codable {

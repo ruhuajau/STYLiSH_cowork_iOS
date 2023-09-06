@@ -17,4 +17,6 @@ class UserDataManager {
     var cid: String?
     
     var memberID: String?
+    
+    var style: String?
 }

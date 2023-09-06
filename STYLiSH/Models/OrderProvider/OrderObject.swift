@@ -146,3 +146,37 @@ struct OrderListObject: Codable {
     let size: String
     let qty: Int
 }
+
+// MARK: - OrderList
+struct NewOrderList: Codable {
+    let list: [NewList]
+}
+
+// MARK: - List
+struct NewList: Codable {
+    let productID: Int
+    let productName: String
+    let productPrice: Int
+    let color: OrderColor
+    let productSize: String
+    let productQty: Int
+    let orderDate: String
+    let orderTimestamp: Int
+
+    enum CodingKeys: String, CodingKey {
+        case productID = "product_id"
+        case productName = "product_name"
+        case productPrice = "product_price"
+        case color
+        case productSize = "product_size"
+        case productQty = "product_qty"
+        case orderDate = "order_date"
+        case orderTimestamp = "order_timestamp"
+    }
+}
+
+// MARK: - Color
+struct OrderColor: Codable {
+    let name, code: String
+}
+

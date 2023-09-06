@@ -114,7 +114,7 @@ class TrolleyViewController: STBaseViewController {
     }
     
     private func postTrackingEventClick() {
-        print("點擊結帳")
+        print("點擊前往結帳")
         if let cid = UserDataManager.shared.cid {
             self.cid = cid
         } else {
@@ -165,6 +165,7 @@ class TrolleyViewController: STBaseViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        postTrackingEventClick()
         if segue.identifier == Segue.checkout {
             guard let checkoutVC = segue.destination as? CheckoutViewController else { return }
             let orderProvider = OrderProvider(order: Order(products: orders))

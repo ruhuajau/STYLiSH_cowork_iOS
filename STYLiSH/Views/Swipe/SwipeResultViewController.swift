@@ -11,6 +11,12 @@ import Foundation
 
 class SwipeResultViewController: UIViewController {
     
+    @IBOutlet weak var styleLabel: UILabel!
+    
+    @IBOutlet weak var styleImageView: UIImageView!
+    
+    //TODO: 更新Image
+    
     private let trackingProvider = TrackingProvider()
     
     private var cid: String?
@@ -24,6 +30,14 @@ class SwipeResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         postTrackingEventTinder()
+        
+        if UserDataManager.shared.style == "A" {
+            styleLabel.text = "簡約風"
+        } else if UserDataManager.shared.style == "B" {
+            styleLabel.text = "運動風"
+        } else if UserDataManager.shared.style == "C" {
+            styleLabel.text = "休閒風"
+        }
     }
     
     private func postTrackingEventTinder() {
@@ -129,7 +143,7 @@ class SwipeResultViewController: UIViewController {
         guard let authVC = UIStoryboard.auth.instantiateInitialViewController() else { return }
         authVC.modalPresentationStyle = .overCurrentContext
         present(authVC, animated: false, completion: nil)
-    
+        print("UserData style: \(UserDataManager.shared.style)")
     }
     
     @IBAction func backToHomePageButtonTapped(_ sender: Any) {
@@ -137,6 +151,7 @@ class SwipeResultViewController: UIViewController {
         guard let mainVC = UIStoryboard.main.instantiateInitialViewController() else { return }
         mainVC.modalPresentationStyle = .overCurrentContext
         present(mainVC, animated: false, completion: nil)
+        print("UserData style: \(UserDataManager.shared.style)")
     }
     
 }
