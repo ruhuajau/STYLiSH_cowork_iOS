@@ -24,6 +24,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mIU-pU-Sui">
                                         <rect key="frame" x="0.0" y="0.0" width="138" height="44"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="womenCatelog" label="womenCatelog"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="女裝">
                                             <color key="titleColor" name="B3"/>
@@ -37,6 +38,7 @@
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ELV-1w-gpV">
                                         <rect key="frame" x="138" y="0.0" width="138" height="44"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="MenCatelog" label="MenCatelog"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="男裝">
                                             <color key="titleColor" name="B3"/>
@@ -50,6 +52,7 @@
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vep-Ll-LpG">
                                         <rect key="frame" x="276" y="0.0" width="138" height="44"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="AccessoryCatelog" label="AccessoryCatelog"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="配件">
                                             <color key="titleColor" name="B3"/>
@@ -218,6 +221,7 @@
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bz7-Xk-k2r">
                                         <rect key="frame" x="16" y="62" width="44" height="44"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="detailBackButton" label="detailBackButton"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="3cO-1H-swp"/>
                                             <constraint firstAttribute="height" constant="44" id="75V-3H-axd"/>
@@ -240,6 +244,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vgc-kd-UhY">
                                                 <rect key="frame" x="16" y="17" width="382" height="48"/>
                                                 <color key="backgroundColor" red="0.24705882352941178" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="addToCartBtn" label="addToCartBtn"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="vjp-dd-GJw"/>
                                                 </constraints>
@@ -324,6 +329,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DnM-qc-iZk">
                                 <rect key="frame" x="50" y="510" width="314" height="35"/>
                                 <color key="backgroundColor" red="0.47285298339999998" green="0.73498081100000001" blue="0.87757575509999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <accessibility key="accessibilityConfiguration" identifier="colorResultBtn" label="colorResultBtn"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="uuW-C4-v4Y"/>
                                 </constraints>
@@ -676,6 +682,7 @@
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXd-YA-IiB">
                             <rect key="frame" x="315" y="16" width="44" height="44"/>
+                            <accessibility key="accessibilityConfiguration" identifier="dismissButton" label="dismissButton"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="IaY-7O-dxL"/>
                                 <constraint firstAttribute="width" constant="44" id="UQy-Qy-s8N"/>
@@ -711,8 +718,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="317"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOy-Xe-m4H">
-                                <rect key="frame" x="73.333333333333329" y="145" width="3.6666666666666714" height="15.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="就是這個！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOy-Xe-m4H">
+                                <rect key="frame" x="41.999999999999993" y="145" width="66.333333333333314" height="15.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -726,6 +733,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jKP-8Y-Eym">
                                 <rect key="frame" x="16" y="258" width="382" height="35"/>
+                                <accessibility key="accessibilityConfiguration" identifier="colorAddToCartBtn" label="colorAddToCartBtn"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="加入購物車">
                                     <backgroundConfiguration key="background" cornerRadius="0.0">

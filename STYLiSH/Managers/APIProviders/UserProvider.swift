@@ -118,6 +118,26 @@ class UserProvider {
         })
     }
     
+    func checkoutWithCash(token: String, completion: @escaping (Result<Void>) -> Void) {
+        guard let token = KeyChainManager.shared.token else {
+            fatalError("Cannot get token when checkout")
+        }
+        
+        
+        
+        let request = STUserRequest.checkoutWithCash(token: token, body: nil)
+                
+                HTTPClient.shared.request(request, completion: { result in
+                    switch result {
+                    case .success:
+                        // Handle successful checkout with cash
+                        completion(Result.success(()))
+                    case .failure(let error):
+                        completion(Result.failure(error))
+                    }
+                })
+    }
+    
     func getUserProfile(completion: @escaping (Result<User>) -> Void) {
         guard let token = KeyChainManager.shared.token else {
             return completion(Result.failure(STYLiSHSignInError.noToken))

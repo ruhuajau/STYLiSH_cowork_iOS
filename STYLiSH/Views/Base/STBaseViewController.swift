@@ -77,7 +77,7 @@ extension UIViewController {
     func backToRoot(completion: (() -> Void)? = nil) {
         if presentingViewController != nil {
             let superVC = presentingViewController
-            dismiss(animated: false, completion: nil)
+//            dismiss(animated: false, completion: nil)
             superVC?.backToRoot(completion: completion)
             return
         }
