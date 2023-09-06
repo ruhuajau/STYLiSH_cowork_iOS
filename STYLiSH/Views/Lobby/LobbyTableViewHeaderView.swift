@@ -12,9 +12,9 @@ class LobbyTableViewHeaderView: UITableViewHeaderFooterView {
 
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .white
+        label.backgroundColor = .black
+        label.textColor = UIColor.white
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .B1
         return label
     }()
     
@@ -31,7 +31,7 @@ class LobbyTableViewHeaderView: UITableViewHeaderFooterView {
     }
     
     private func setupLayout() {
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .black
         addSubview(titleLabel)
         
         NSLayoutConstraint.activate([

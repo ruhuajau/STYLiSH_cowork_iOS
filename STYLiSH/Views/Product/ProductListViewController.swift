@@ -49,7 +49,7 @@ class ProductListViewController: STCompondViewController {
     }
 
     private func setupCollectionView() {
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .black
         collectionView.lk_registerCellWithNib(
             identifier: String(describing: ProductCollectionViewCell.self),
             bundle: nil

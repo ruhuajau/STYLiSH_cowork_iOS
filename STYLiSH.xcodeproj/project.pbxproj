@@ -13,6 +13,7 @@
 		0EE8C02C2AA5A9B9003B205C /* ColorPickerSkinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8C02B2AA5A9B9003B205C /* ColorPickerSkinTableViewCell.swift */; };
 		0EE8C0332AA6AFBD003B205C /* ShowColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8C0322AA6AFBD003B205C /* ShowColorViewController.swift */; };
 		0EE8C0372AA6BD51003B205C /* SizeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8C0362AA6BD51003B205C /* SizeCollectionViewCell.swift */; };
+		0EE8C0392AA822E5003B205C /* GachaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8C0382AA822E5003B205C /* GachaViewController.swift */; };
 		30C2E5FF28B87D4700DD2939 /* TPDirect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30C2E5FE28B87D4700DD2939 /* TPDirect.framework */; };
 		3C09F5122211435B00C5B3E2 /* Lobby.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C09F5112211435B00C5B3E2 /* Lobby.storyboard */; };
 		3C09F51C22114A0100C5B3E2 /* STTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C09F51B22114A0100C5B3E2 /* STTabBarViewController.swift */; };
@@ -156,6 +157,7 @@
 		0EE8C02B2AA5A9B9003B205C /* ColorPickerSkinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerSkinTableViewCell.swift; sourceTree = "<group>"; };
 		0EE8C0322AA6AFBD003B205C /* ShowColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowColorViewController.swift; sourceTree = "<group>"; };
 		0EE8C0362AA6BD51003B205C /* SizeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCollectionViewCell.swift; sourceTree = "<group>"; };
+		0EE8C0382AA822E5003B205C /* GachaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaViewController.swift; sourceTree = "<group>"; };
 		30C2E5FE28B87D4700DD2939 /* TPDirect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TPDirect.framework; sourceTree = "<group>"; };
 		3C09F5112211435B00C5B3E2 /* Lobby.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Lobby.storyboard; sourceTree = "<group>"; };
 		3C09F51B22114A0100C5B3E2 /* STTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STTabBarViewController.swift; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				3C1ACFE322151F50005583E2 /* ProfileViewController.swift */,
 				3C1ACFE822152D29005583E2 /* ProfileCollectionViewCell.swift */,
 				3C1ACFEA22153114005583E2 /* ProfileCollectionReusableView.swift */,
+				0EE8C0382AA822E5003B205C /* GachaViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1064,6 +1067,7 @@
 				3C9EF5342213C5C800DEE152 /* HTTPClient.swift in Sources */,
 				3CEBE07C222F7A210064EF82 /* Int+Extension.swift in Sources */,
 				3CED80AE23012CE400B7DA8E /* NSLocalizedString+Extension.swift in Sources */,
+				0EE8C0392AA822E5003B205C /* GachaViewController.swift in Sources */,
 				DB2208922AA4D56900F0422A /* TrackingRequest.swift in Sources */,
 				3CA25519222A484300B286F6 /* ProductsListProvider.swift in Sources */,
 				3C3369162227CE7D008A5A7A /* TrolleyProductBaseView.swift in Sources */,
