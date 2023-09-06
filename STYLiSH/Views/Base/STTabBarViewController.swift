@@ -43,8 +43,23 @@ class STTabBarViewController: UITabBarController {
         
         // Set the accessibilityIdentifier for the "Product" tab
         if let productTabIndex = tabs.firstIndex(where: { $0 == .product }) {
+            viewControllers?[productTabIndex].tabBarItem.isAccessibilityElement = true
             viewControllers?[productTabIndex].tabBarItem.accessibilityIdentifier = "ProductTab"
             viewControllers?[productTabIndex].tabBarItem.accessibilityLabel = "ProductTab"
+        }
+        
+        // Set the accessibilityIdentifier for the "Product" tab
+        if let productTabIndex = tabs.firstIndex(where: { $0 == .trolley }) {
+            viewControllers?[productTabIndex].tabBarItem.isAccessibilityElement = true
+            viewControllers?[productTabIndex].tabBarItem.accessibilityIdentifier = "TrolleyTab"
+            viewControllers?[productTabIndex].tabBarItem.accessibilityLabel = "TrolleyTab"
+        }
+        
+        // Set the accessibilityIdentifier for the "Product" tab
+        if let productTabIndex = tabs.firstIndex(where: { $0 == .profile }) {
+            viewControllers?[productTabIndex].tabBarItem.isAccessibilityElement = true
+            viewControllers?[productTabIndex].tabBarItem.accessibilityIdentifier = "ProfileTab"
+            viewControllers?[productTabIndex].tabBarItem.accessibilityLabel = "ProfileTab"
         }
     }
 }
