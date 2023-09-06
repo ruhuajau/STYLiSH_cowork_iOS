@@ -152,8 +152,11 @@ extension LobbyViewController: LobbyViewDelegate {
             for: indexPath
         )
         guard let lobbyCell = cell as? LobbyTableViewCell else { return cell }
+        
+        lobbyCell.isAccessibilityElement = true
         lobbyCell.accessibilityIdentifier = "HotsCell_\(indexPath.row)"
         lobbyCell.accessibilityLabel = "HotsCell_\(indexPath.row)"
+        
         let product = datas[indexPath.section].products[indexPath.row]
         if indexPath.row % 2 == 0 {
             lobbyCell.singlePage(

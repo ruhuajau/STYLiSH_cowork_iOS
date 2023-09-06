@@ -70,6 +70,7 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pCS-Gw-yDO">
                         <rect key="frame" x="50" y="24" width="242" height="30"/>
+                        <accessibility key="accessibilityConfiguration" identifier="colorAnalysisBtn" label="colorAnalysisBtn"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="XwF-np-9cI"/>
                         </constraints>

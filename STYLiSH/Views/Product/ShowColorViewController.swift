@@ -25,6 +25,16 @@ class ShowColorViewController: UIViewController, UICollectionViewDataSource, UIC
     
     @IBOutlet weak var stockLabel: UILabel!
     
+    private let trackingProvider = TrackingProvider()
+    
+    private var cid: String?
+    
+    private var memberID: String?
+    
+    private var eventDate: String?
+    
+    private var eventTimestamp: Int?
+    
     var product: Product?{
         didSet {
             self.sizes = product!.sizes
@@ -264,7 +274,51 @@ class ShowColorViewController: UIViewController, UICollectionViewDataSource, UIC
         alertView.duration = 0.5
         alertView.present()
 
+        postTrackingEventColorAddToCart()
     }
+    
+    private func postTrackingEventColorAddToCart() {
+        print("色彩分析後加入購物車")
+        if let cid = UserDataManager.shared.cid {
+            self.cid = cid
+        } else {
+            let newUUID = UUID()
+            let cidString = newUUID.uuidString
+            UserDataManager.shared.cid = cidString
+            self.cid = cidString
+        }
+        
+        if let memberID = UserDataManager.shared.memberID {
+            self.memberID = memberID
+        }
+        
+        configureEventDate()
+        configureEventTimestamp()
+        // swiftlint:disable:next line_length
+        trackingProvider.trackEvent(cid: cid!, memberID: memberID, eventDate: eventDate!, eventTimestamp: eventTimestamp!, eventType: "view", eventValue: "tinder", splitTesting: "fresh") { result in
+            switch result {
+                case .success:
+                    print("cid: \(self.cid), memberID: \(self.memberID), eventDate: \(self.eventDate), eventTimestamp: \(self.eventTimestamp)")
+                    print("Tracking event success.")
+                case .failure(let error):
+                    print("Tracking event error: \(error)")
+            }
+        }
+    }
+    
+    func configureEventDate() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let currentDate = Date()
+        let formattedDate = dateFormatter.string(from: currentDate)
+        eventDate = formattedDate
+    }
+    
+    func configureEventTimestamp() {
+        let currentTimestamp = Int(Date().timeIntervalSince1970)
+        eventTimestamp = currentTimestamp
+    }
+
     
 }
     
