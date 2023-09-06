@@ -15,7 +15,7 @@ class SwipeResultViewController: UIViewController {
     
     @IBOutlet weak var styleImageView: UIImageView!
     
-    //TODO: 更新Label和Image
+    //TODO: 更新Image
     
     private let trackingProvider = TrackingProvider()
     
@@ -30,6 +30,14 @@ class SwipeResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         postTrackingEventTinder()
+        
+        if UserDataManager.shared.style == "A" {
+            styleLabel.text = "簡約風"
+        } else if UserDataManager.shared.style == "B" {
+            styleLabel.text = "運動風"
+        } else if UserDataManager.shared.style == "C" {
+            styleLabel.text = "休閒風"
+        }
     }
     
     private func postTrackingEventTinder() {
