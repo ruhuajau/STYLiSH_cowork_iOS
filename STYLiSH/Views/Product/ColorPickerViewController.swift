@@ -20,6 +20,7 @@ class ColorPickerViewController: UIViewController, UITableViewDelegate, UITableV
     var selectedSkinColor: String?
     private var colorStrings: [String] = []
     
+    private let trackingProvider = TrackingProvider()
     private let featureProvider = FeatureProvider()
     private var cid: String?
     private var memberID: String?
@@ -199,6 +200,8 @@ class ColorPickerViewController: UIViewController, UITableViewDelegate, UITableV
                 print("Error: \(error.localizedDescription)")
             }
         }
+        
+        postTrackingEventCalculateColor()
 
     }
     
@@ -208,6 +211,35 @@ class ColorPickerViewController: UIViewController, UITableViewDelegate, UITableV
             showColorVC.colorRecommend = color
         }
 
+    }
+    
+    private func postTrackingEventCalculateColor() {
+        print("開始計算你的顏色")
+        if let cid = UserDataManager.shared.cid {
+            self.cid = cid
+        } else {
+            let newUUID = UUID()
+            let cidString = newUUID.uuidString
+            UserDataManager.shared.cid = cidString
+            self.cid = cidString
+        }
+        
+        if let memberID = UserDataManager.shared.memberID {
+            self.memberID = memberID
+        }
+        
+        configureEventDate()
+        configureEventTimestamp()
+        // swiftlint:disable:next line_length
+        trackingProvider.trackEvent(cid: cid!, memberID: memberID, eventDate: eventDate!, eventTimestamp: eventTimestamp!, eventType: "view", eventValue: "tinder", splitTesting: "fresh") { result in
+            switch result {
+                case .success:
+                    print("cid: \(self.cid), memberID: \(self.memberID), eventDate: \(self.eventDate), eventTimestamp: \(self.eventTimestamp)")
+                    print("Tracking event success.")
+                case .failure(let error):
+                    print("Tracking event error: \(error)")
+            }
+        }
     }
     
 }
